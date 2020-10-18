@@ -7,12 +7,17 @@ import { useStyles } from "../../hooks";
  * Imports other components and hooks.
  */
 import Colors, { ColorsPropTypes, ColorsDefaultProps } from "../Colors";
+import ColorPairs, {
+  ColorPairsPropTypes,
+  ColorPairsDefaultProps,
+} from "../ColorPairs";
 
 /**
  * Defines the prop types.
  */
 const propTypes = {
   colors: PropTypes.shape(ColorsPropTypes),
+  colorPairs: PropTypes.shape(ColorPairsPropTypes),
 };
 
 /**
@@ -20,6 +25,7 @@ const propTypes = {
  */
 const defaultProps = {
   colors: ColorsDefaultProps,
+  colorPairs: ColorPairsDefaultProps,
 };
 
 /**
@@ -47,6 +53,8 @@ const Designer = (props) => {
     <div className={cx("Designer", containerKlass)}>
       <h3>Colors</h3>
       <Colors {...colors} />
+      <h3>Color pairs</h3>
+      <ColorPairs {...colors} />
     </div>
   );
 };

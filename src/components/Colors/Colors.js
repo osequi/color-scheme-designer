@@ -29,6 +29,11 @@ const defaultProps = {
   ],
 };
 
+const color = (name) => {
+  const found = defaultProps.colors.find((item) => item.name === name);
+  return found ? found : {};
+};
+
 /**
  * Defines the styles.
  */
@@ -62,4 +67,8 @@ Colors.propTypes = propTypes;
 Colors.defaultProps = defaultProps;
 
 export default Colors;
-export { propTypes as ColorsPropTypes, defaultProps as ColorsDefaultProps };
+export {
+  propTypes as ColorsPropTypes,
+  defaultProps as ColorsDefaultProps,
+  color,
+};
