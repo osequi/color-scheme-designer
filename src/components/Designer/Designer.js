@@ -45,6 +45,7 @@ const Designer = (props) => {
 
   return (
     <div className={cx("Designer", containerKlass)}>
+      <h3>Colors</h3>
       <Colors {...colors} />
     </div>
   );

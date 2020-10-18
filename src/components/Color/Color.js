@@ -6,11 +6,13 @@ import { useStyles } from "../../hooks";
 /**
  * Imports other components and hooks.
  */
+import Cell from "../layout/Cell";
 
 /**
  * Defines the prop types.
  */
 const propTypes = {
+  id: PropTypes.string,
   name: PropTypes.string,
   value: PropTypes.string,
 };
@@ -19,6 +21,7 @@ const propTypes = {
  * Defines the default props.
  */
 const defaultProps = {
+  id: "1",
   name: "white",
   value: "#fff",
 };
@@ -27,9 +30,13 @@ const defaultProps = {
  * Defines the styles.
  */
 const container = (props) => {
+  const height = 100 / props.numberOfItems;
+
   return {
-    width: `calc(var(--lem) * 10)`,
-    height: `calc(var(--lem) * 10)`,
+    width: "100%",
+    height: `${height}vw`,
+    //maxWidth: `calc(5 * var(--lem))`,
+    //maxHeight: `calc(5 * var(--lem))`,
     backgroundColor: props.value,
   };
 };
@@ -39,9 +46,10 @@ const container = (props) => {
  * @see Color.md
  */
 const Color = (props) => {
+  const { id } = props;
   const { containerKlass } = useStyles([container], props);
 
-  return <div className={cx("Color", containerKlass)}></div>;
+  return <Cell id={id} className={cx("Color", containerKlass)}></Cell>;
 };
 
 Color.propTypes = propTypes;

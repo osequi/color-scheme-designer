@@ -2,11 +2,13 @@ import React from "react";
 import PropTypes from "prop-types";
 import { cx } from "emotion";
 import { useStyles } from "../../hooks";
+import shortid from "shortid";
 
 /**
  * Imports other components and hooks.
  */
 import Color, { ColorPropTypes, ColorDefaultProps } from "../Color";
+import Grid from "../layout/Grid";
 
 /**
  * Defines the prop types.
@@ -20,10 +22,10 @@ const propTypes = {
  */
 const defaultProps = {
   colors: [
-    { name: "light", value: "#f7f5e9" },
-    { name: "dark", value: "#464646" },
-    { name: "highlight", value: "#7040ff" },
-    { name: "shade", value: "#cdcdcd" },
+    { id: shortid.generate(), name: "light", value: "#f7f5e9" },
+    { id: shortid.generate(), name: "dark", value: "#464646" },
+    { id: shortid.generate(), name: "highlight", value: "#7040ff" },
+    { id: shortid.generate(), name: "shade", value: "#cdcdcd" },
   ],
 };
 
@@ -46,10 +48,14 @@ const Colors = (props) => {
     colors &&
     colors.map((item) => {
       const { id } = item;
-      return <Color key={id} {...item} />;
+      return <Color key={id} numberOfItems={colors.length} {...item} />;
     });
 
-  return <div className={cx("Colors", containerKlass)}>{colorsList}</div>;
+  return (
+    <Grid columns={colorsList.length} className={cx("Colors", containerKlass)}>
+      {colorsList}
+    </Grid>
+  );
 };
 
 Colors.propTypes = propTypes;
