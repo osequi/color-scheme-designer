@@ -3,11 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@osequi/new-component": "^1.0.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "emotion": "^10.0.27",
+    "modularscale-js": "^3.0.1",
+    "normalize.css": "^8.0.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
+    "react-helmet": "^6.1.0",
     "react-scripts": "3.4.3"
   },
   "scripts": {

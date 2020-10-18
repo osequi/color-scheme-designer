@@ -1,0 +1,111 @@
+/**
+ * Sits on top of normalize.css
+ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /**
+  * Adds font smoothing and antialiasing.
+  * @see https://devhints.io/css-antialias
+  */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button,
+input,
+optgroup,
+select,
+textarea {
+  margin: 0;
+  padding: 0;
+  font-size: 1em;
+  font-weight: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  word-wrap: break-word;
+}
+
+/**
+ * Trying to remove the monospace font.
+ * Later the font-family has to be explicitely set in the theme.
+ */
+input,
+pre,
+code,
+kbd,
+samp {
+  font-family: inherit;
+}
+
+input,
+input[type="range"],
+input[type="color"],
+input[type="file"],
+select,
+option {
+  background: red;
+  border: none;
+  height: var(--lem);
+}
+
+label {
+  display: inline-flex;
+}
+
+table,
+thead,
+tbody,
+tfoot,
+tr,
+th,
+td {
+  display: block;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-collapse: inherit;
+  border-spacing: 0;
+  border-color: inherit;
+  vertical-align: inherit;
+  text-align: left;
+  font-weight: inherit;
+  -webkit-border-horizontal-spacing: 0;
+  -webkit-border-vertical-spacing: 0;
+}
+th,
+td {
+  display: inline;
+}
+
+/**
+ * Still the height has to be set in `lem`.
+ */
+img {
+  display: block;
+}
+
+/**
+ * This fixes the hr element from breaking the grid
+ */
+hr {
+  border: 0;
+  border: 1px solid;
+  font-size: calc(var(--lem) * 6 / 9);
+}
