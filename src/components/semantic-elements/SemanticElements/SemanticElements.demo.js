@@ -3,7 +3,8 @@ import React from "react";
 /**
  * Imports other components and hooks
  */
-import SemanticElements, {
+import {
+  SemanticElements,
   Article,
   Aside,
   Footer,
@@ -17,7 +18,7 @@ import SemanticElements, {
   H6,
   Nav,
   Section,
-} from ".";
+} from "../";
 
 /**
  * Displays the demo.

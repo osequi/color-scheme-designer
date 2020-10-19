@@ -9,7 +9,7 @@ import shortid from "shortid";
  */
 import Color, { ColorPropTypes, ColorDefaultProps } from "../Color";
 import Grid from "../layout/Grid";
-import { Section } from "../semantic-elements/SemanticElements";
+import { Section } from "../semantic-elements/";
 
 /**
  * Defines the prop types.

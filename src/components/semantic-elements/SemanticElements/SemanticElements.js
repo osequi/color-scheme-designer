@@ -80,7 +80,9 @@ const defaultProps = {
 const requiredPropsAreSet = (props) => {
   const { children } = props;
 
-  return !isNil(children);
+  //return !isNil(children);
+  // It turns out there are plenty of cases when we don't have children but want to display something, like a box.
+  return true;
 };
 
 /**

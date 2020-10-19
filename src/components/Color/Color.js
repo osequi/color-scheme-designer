@@ -7,6 +7,7 @@ import { useStyles } from "../../hooks";
  * Imports other components and hooks.
  */
 import Cell from "../layout/Cell";
+import { Aside } from "../semantic-elements";
 
 /**
  * Defines the prop types.
@@ -49,7 +50,7 @@ const Color = (props) => {
   const { id } = props;
   const { containerKlass } = useStyles([container], props);
 
-  return <Cell id={id} className={cx("Color", containerKlass)}></Cell>;
+  return <Cell id={id} className={cx("Color", containerKlass)} as={Aside} />;
 };
 
 Color.propTypes = propTypes;

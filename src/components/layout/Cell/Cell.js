@@ -68,6 +68,8 @@ const Cell = (props) => {
 
   const props2 = { className: cx(className, containerKlass) };
 
+  console.log("as:", as);
+
   return createElement(as, props2, children);
 };
 

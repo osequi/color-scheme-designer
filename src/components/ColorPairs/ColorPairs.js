@@ -13,8 +13,8 @@ import ColorPair, {
 } from "../ColorPair";
 import { ColorsPropTypes, ColorsDefaultProps } from "../Colors";
 import Grid from "../layout/Grid";
-import { Section as Section1 } from "../semantic-elements/SemanticElements";
-import { Section as Section2 } from "../semantic-elements/SemanticElements";
+import { Section as Section1 } from "../semantic-elements/";
+import { Section as Section2 } from "../semantic-elements/";
 
 /**
  * Defines the prop types.
