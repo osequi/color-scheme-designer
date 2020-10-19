@@ -13,8 +13,7 @@ import ColorPair, {
 } from "../ColorPair";
 import { ColorsPropTypes, ColorsDefaultProps } from "../Colors";
 import Grid from "../layout/Grid";
-import { Section as Section1 } from "../semantic-elements/";
-import { Section as Section2 } from "../semantic-elements/";
+import { Section } from "../semantic-elements/";
 
 /**
  * Defines the prop types.
@@ -56,9 +55,6 @@ const ColorPairs = (props) => {
       );
     });
 
-  Section1.defaultProps.title = "Legible color pairs";
-  Section1.defaultProps.display = true;
-
   const notLegibleColorPairsList =
     notLegible &&
     notLegible.map((item) => {
@@ -73,15 +69,15 @@ const ColorPairs = (props) => {
       );
     });
 
-  Section2.defaultProps.title = "Not legible color pairs";
-  Section2.defaultProps.display = true;
+  const section1Props = { title: "Legible color pairs", display: true };
+  const section2Props = { title: "Not legible color pairs", display: true };
 
   return (
     <Grid columns={1} className={cx("ColorPairs", containerKlass)}>
-      <Grid className="Legibles" as={Section1}>
+      <Grid className="Legibles" as={Section} asProps={section1Props}>
         {legibleColorPairsList}
       </Grid>
-      <Grid className="NotLegibles" as={Section2}>
+      <Grid className="NotLegibles" as={Section} asProps={section2Props}>
         {notLegibleColorPairsList}
       </Grid>
     </Grid>

@@ -26,6 +26,11 @@ const propTypes = {
     "section",
   ]),
   /**
+   * Props for the element.
+   * @type {object}
+   */
+  asProps: PropTypes.object,
+  /**
    * The heading of the element.
    * Used to insert (a mostly hidden_ heading tag like `<nav><h3>Menu</h3>...</nav>`.
    * It can be overwritten by the `title` and `display` props.
@@ -65,6 +70,7 @@ const propTypes = {
  */
 const defaultProps = {
   as: null,
+  asProps: null,
   heading: HeadingsDefaultProps,
   title: null,
   display: false,
@@ -115,7 +121,7 @@ const nonEmptyClassname = (props) => {
  * It's better to use specific components like `<Article>` which has their props properly set up.
  */
 const SemanticElements = (props) => {
-  const { as, heading, title, children, display } = props;
+  const { as, asProps, heading, title, children, display } = props;
 
   /**
    * Displays nothing if the mandatory props are not defined.
@@ -137,7 +143,7 @@ const SemanticElements = (props) => {
   /**
    * Prepares props for createElement
    */
-  const props2 = { className: className };
+  const props2 = { className: className, ...asProps };
   const children2 = (
     <>
       {<Headings {...heading2} />}

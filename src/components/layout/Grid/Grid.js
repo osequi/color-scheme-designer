@@ -44,6 +44,11 @@ const propTypes = {
    */
   as: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
   /**
+   * Props for the element.
+   * @type {object}
+   */
+  asProps: PropTypes.object,
+  /**
    * The content to be displayed.
    * It should be preferably an array of Cells.
    * @type {any}
@@ -61,6 +66,7 @@ const defaultProps = {
   gap: 0,
   fauxLines: "none",
   as: "div",
+  asProps: null,
   children: null,
 };
 
@@ -129,7 +135,7 @@ const calculateFauxLines = (props) => {
  * @see Grid.md
  */
 const Grid = (props) => {
-  const { columns, fauxLines, as, children } = props;
+  const { columns, fauxLines, as, asProps, children } = props;
 
   /**
    * Displays the faux lines.
@@ -150,7 +156,10 @@ const Grid = (props) => {
   /**
    * Prepares the props to render the component.
    */
-  const props2 = { className: cx("Grid", containerKlass, fauxLinesStyleKlass) };
+  const props2 = {
+    className: cx("Grid", containerKlass, fauxLinesStyleKlass),
+    ...asProps,
+  };
 
   return createElement(as, props2, children);
 };

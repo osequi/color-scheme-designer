@@ -30,6 +30,11 @@ const propTypes = {
    * The content of the cell.
    * @type {any}
    */
+  /**
+   * Props for the element.
+   * @type {object}
+   */
+  asProps: PropTypes.object,
   children: PropTypes.any,
   /**
    * The className of the element.
@@ -47,6 +52,7 @@ const defaultProps = {
   id: null,
   name: null,
   as: "div",
+  asProps: null,
   children: null,
   className: "Cell",
 };
@@ -63,12 +69,10 @@ const container = {
  * @see Cell.md
  */
 const Cell = (props) => {
-  const { as, children, className } = props;
+  const { as, asProps, children, className } = props;
   const { containerKlass } = useStyles([container], props);
 
-  const props2 = { className: cx(className, containerKlass) };
-
-  console.log("as:", as);
+  const props2 = { className: cx(className, containerKlass), ...asProps };
 
   return createElement(as, props2, children);
 };

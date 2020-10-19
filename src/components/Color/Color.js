@@ -47,8 +47,11 @@ const container = (props) => {
  * @see Color.md
  */
 const Color = (props) => {
-  const { id } = props;
+  const { id, name } = props;
   const { containerKlass } = useStyles([container], props);
+
+  Aside.defaultProps.title = name;
+  Aside.defaultProps.display = true;
 
   return <Cell id={id} className={cx("Color", containerKlass)} as={Aside} />;
 };
