@@ -13,14 +13,17 @@ const colorContrastTreshhold = 4.51;
  * @return {object}       Two arrays; one for legible, another for non legible color pairs.
  */
 const generateColorPairs = (colors) => {
-  let legible,
-    notLegible = [];
+  let legible = [];
+  let notLegible = [];
 
   for (var i = 0; i < colors.length; i++) {
     const { name: nameI, value: valueI } = colors[i];
 
     for (var j = 1; j < colors.length; j++) {
       const { name: nameJ, value: valueJ } = colors[j];
+
+      if (valueI === valueJ) break;
+
       const colorContrast = contrast(valueI, valueJ);
 
       const pair1 = {
@@ -42,7 +45,7 @@ const generateColorPairs = (colors) => {
         notLegible.push(pair2);
       } else {
         legible.push(pair1);
-        notLegible.push(pair2);
+        legible.push(pair2);
       }
     }
   }
