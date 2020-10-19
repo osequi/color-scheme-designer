@@ -1,4 +1,5 @@
 import { contrast } from "chroma-js";
+import { startCase } from "lodash";
 
 /**
  * The color contrast treshold value.
@@ -27,14 +28,14 @@ const generateColorPairs = (colors) => {
       const colorContrast = contrast(valueI, valueJ);
 
       const pair1 = {
-        name: `${nameI}-${nameJ}`,
+        name: `${startCase(nameI)} on ${startCase(nameJ)}`,
         color: valueI,
         backgroundColor: valueJ,
         contrast: colorContrast,
       };
 
       const pair2 = {
-        name: `${nameJ}-${nameI}`,
+        name: `${startCase(nameJ)} on ${startCase(nameI)}`,
         color: valueJ,
         backgroundColor: valueI,
         contrast: colorContrast,

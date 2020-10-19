@@ -36,8 +36,8 @@ const defaultProps = {
  */
 const container = (props) => {
   return {
-    color: props.color.value,
-    backgroundColor: props.backgroundColor.value,
+    color: props.color,
+    backgroundColor: props.backgroundColor,
   };
 };
 

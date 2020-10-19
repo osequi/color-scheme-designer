@@ -14,6 +14,7 @@ import ColorPair, {
 import { ColorsPropTypes, ColorsDefaultProps } from "../Colors";
 import { Grid } from "../layout";
 import { Section } from "../semantic-elements/";
+import { Text } from "../typography";
 
 /**
  * Defines the prop types.
@@ -69,21 +70,35 @@ const ColorPairs = (props) => {
       );
     });
 
-  const section0Props = { title: "Color pairs" };
-  const section1Props = { title: "Legible color pairs", display: true };
-  const section2Props = { title: "Not legible color pairs", display: true };
+  const section0Props = { title: <Text variant="subtitle">Color pairs</Text> };
+
+  const section1Props = {
+    title: <Text variant="subtitle">Legible color pairs</Text>,
+    display: true,
+  };
+
+  const section2Props = {
+    title: <Text variant="subtitle">Not legible color pairs</Text>,
+    display: true,
+  };
 
   return (
     <Grid
-      columns={1}
+      columns={[1, 2]}
+      gap={1}
       className={cx("ColorPairs", containerKlass)}
       as={Section}
       asProps={section0Props}
     >
-      <Grid className="Legibles" as={Section} asProps={section1Props}>
+      <Grid gap={1} className="Legibles" as={Section} asProps={section1Props}>
         {legibleColorPairsList}
       </Grid>
-      <Grid className="NotLegibles" as={Section} asProps={section2Props}>
+      <Grid
+        gap={1}
+        className="NotLegibles"
+        as={Section}
+        asProps={section2Props}
+      >
         {notLegibleColorPairsList}
       </Grid>
     </Grid>

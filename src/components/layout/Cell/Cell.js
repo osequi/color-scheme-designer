@@ -60,9 +60,9 @@ const defaultProps = {
 /**
  * Defines the styles.
  */
-const container = {
-  label: "Container",
-};
+const container = (props) => ({
+  padding: "var(--lem)",
+});
 
 /**
  * Displays the component.

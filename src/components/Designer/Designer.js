@@ -55,7 +55,7 @@ const Designer = (props) => {
 
   return (
     <Grid
-      columns={[1, 1, 2]}
+      columns={[1, 1, 1, 2]}
       gap={1}
       className={cx("Designer", containerKlass)}
       as={Section}

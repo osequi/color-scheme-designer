@@ -65,7 +65,7 @@ const defaultProps = {
   width: "100%",
   height: "100%",
   columns: 1,
-  gap: 0,
+  gap: 1,
   fauxLines: "none",
   as: "div",
   asProps: null,
