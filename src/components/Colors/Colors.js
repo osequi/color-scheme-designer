@@ -9,6 +9,7 @@ import shortid from "shortid";
  */
 import Color, { ColorPropTypes, ColorDefaultProps } from "../Color";
 import Grid from "../layout/Grid";
+import { Section } from "../semantic-elements/SemanticElements";
 
 /**
  * Defines the prop types.
@@ -27,11 +28,6 @@ const defaultProps = {
     { id: shortid.generate(), name: "highlight", value: "#7040ff" },
     { id: shortid.generate(), name: "shade", value: "#cdcdcd" },
   ],
-};
-
-const color = (name) => {
-  const found = defaultProps.colors.find((item) => item.name === name);
-  return found ? found : {};
 };
 
 /**
@@ -56,8 +52,15 @@ const Colors = (props) => {
       return <Color key={id} numberOfItems={colors.length} {...item} />;
     });
 
+  Section.defaultProps.title = "Colors";
+  Section.defaultProps.display = true;
+
   return (
-    <Grid columns={colorsList.length} className={cx("Colors", containerKlass)}>
+    <Grid
+      columns={colorsList.length}
+      className={cx("Colors", containerKlass)}
+      as={Section}
+    >
       {colorsList}
     </Grid>
   );
@@ -67,8 +70,4 @@ Colors.propTypes = propTypes;
 Colors.defaultProps = defaultProps;
 
 export default Colors;
-export {
-  propTypes as ColorsPropTypes,
-  defaultProps as ColorsDefaultProps,
-  color,
-};
+export { propTypes as ColorsPropTypes, defaultProps as ColorsDefaultProps };

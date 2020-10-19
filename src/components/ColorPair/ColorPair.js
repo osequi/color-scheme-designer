@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import { cx } from "emotion";
 import { useStyles } from "../../hooks";
-import { contrast } from "chroma-js";
 
 /**
  * Imports other components and hooks.
@@ -18,6 +17,7 @@ const propTypes = {
   name: PropTypes.string,
   color: PropTypes.string,
   backgroundColor: PropTypes.string,
+  contrast: PropTypes.number,
 };
 
 /**
@@ -28,6 +28,7 @@ const defaultProps = {
   name: "default",
   color: "black",
   backgroundColor: "white",
+  contrast: 10,
 };
 
 /**
@@ -45,18 +46,17 @@ const container = (props) => {
  * @see ColorPair.md
  */
 const ColorPair = (props) => {
-  const { id, name, color, backgroundColor } = props;
+  const { id, name, contrast } = props;
   const { containerKlass } = useStyles([container], props);
 
-  const colorContrast = contrast(color.value, backgroundColor.value);
-  const text = colorContrast > 4.51 ? "Ok" : "";
+  const text = contrast > 4.51 ? "Ok" : "";
 
   return (
     <Cell id={id} className={cx("ColorPair", containerKlass)}>
       <Grid columns={1}>
         <p>{name}</p>
         <p>
-          {colorContrast.toFixed(2)} {text}
+          {contrast.toFixed(2)} {text}
         </p>
       </Grid>
     </Cell>
