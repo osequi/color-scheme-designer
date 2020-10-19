@@ -2,8 +2,7 @@ import React, { createContext } from "react";
 
 import theme from "./theme";
 import Designer from "./components/Designer";
-import Setup from "./components/typography/Setup";
-import Text from "./components/typography/Text";
+import { Setup, Text } from "./components/typography";
 
 const ThemeContext = createContext();
 

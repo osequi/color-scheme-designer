@@ -8,7 +8,7 @@ import { useStyles } from "../../hooks";
  */
 import Colors, { ColorsPropTypes, ColorsDefaultProps } from "../Colors";
 import ColorPairs from "../ColorPairs";
-import Grid from "../layout/Grid";
+import { Grid } from "../layout";
 import { Section } from "../semantic-elements";
 import { Text } from "../typography";
 

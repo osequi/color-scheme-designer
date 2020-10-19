@@ -12,7 +12,7 @@ import ColorPair, {
   ColorPairDefaultProps,
 } from "../ColorPair";
 import { ColorsPropTypes, ColorsDefaultProps } from "../Colors";
-import Grid from "../layout/Grid";
+import { Grid } from "../layout";
 import { Section } from "../semantic-elements/";
 
 /**

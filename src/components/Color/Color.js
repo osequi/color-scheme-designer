@@ -6,7 +6,7 @@ import { useStyles } from "../../hooks";
 /**
  * Imports other components and hooks.
  */
-import Cell from "../layout/Cell";
+import { Cell } from "../layout";
 import { Article } from "../semantic-elements";
 
 /**
