@@ -71,7 +71,7 @@ const defaultProps = {
 };
 
 /**
- * Defines the styles.
+ * Defines the grid container styles.
  */
 const container = (props) => ({
   display: "grid",
@@ -88,6 +88,9 @@ const container = (props) => ({
   },
 });
 
+/**
+ * Defines the grid faux lines styles.
+ */
 const fauxLinesStyle = (props) => ({
   ["&  > *"]: {
     boxSizing: "border-box",
@@ -131,6 +134,21 @@ const calculateFauxLines = (props) => {
 };
 
 /**
+ * Checks if a grid has a title.
+ */
+const hasTitle = (asProps) => {
+  return asProps && asProps?.title && asProps?.display && asProps.display;
+};
+
+/**
+ * Defines the styles when the grid has a title set.
+ */
+const gridWithTitle = (props) => ({
+  display: "flex",
+  flexDirection: "column",
+});
+
+/**
  * Displays content using a CSS Grid.
  * @see Grid.md
  */
@@ -145,8 +163,8 @@ const Grid = (props) => {
   /**
    * Loads the styles.
    */
-  const { containerKlass, fauxLinesStyleKlass } = useStyles(
-    [container, fauxLinesStyle],
+  const { containerKlass, fauxLinesStyleKlass, gridWithTitleKlass } = useStyles(
+    [container, fauxLinesStyle, gridWithTitle],
     {
       ...props,
       ...fauxLinesProps,
@@ -154,14 +172,37 @@ const Grid = (props) => {
   );
 
   /**
+   * Checks if grid has a title.
+   */
+  const gridHasTitle = hasTitle(asProps);
+
+  /**
    * Prepares the props to render the component.
    */
-  const props2 = {
+  const propsGridWithoutTitle = {
     className: cx("Grid", containerKlass, fauxLinesStyleKlass),
     ...asProps,
   };
 
-  return createElement(as, props2, children);
+  const propsGridWithTitle = {
+    className: cx("Grid", gridWithTitleKlass),
+    ...asProps,
+  };
+
+  const props2 = gridHasTitle ? propsGridWithTitle : propsGridWithoutTitle;
+
+  /**
+   * Prepares the children.
+   */
+  const childrenWrapped = gridHasTitle ? (
+    <div className={cx("GridItems", containerKlass, fauxLinesStyleKlass)}>
+      {children}
+    </div>
+  ) : (
+    children
+  );
+
+  return createElement(as, props2, childrenWrapped);
 };
 
 Grid.propTypes = propTypes;

@@ -52,14 +52,14 @@ const Colors = (props) => {
       return <Color key={id} numberOfItems={colors.length} {...item} />;
     });
 
-  Section.defaultProps.title = "Colors";
-  Section.defaultProps.display = true;
+  const sectionProps = { title: "Colors", display: true };
 
   return (
     <Grid
       columns={colorsList.length}
       className={cx("Colors", containerKlass)}
       as={Section}
+      asProps={sectionProps}
     >
       {colorsList}
     </Grid>
