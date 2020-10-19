@@ -13,7 +13,9 @@ import { responsiveness } from "../responsiveness";
  */
 const lem = () => {
   const { grid } = typography;
-  const { fontSize, lineHeight } = grid;
+  const { fontSizes, lineHeight } = grid;
+  const fontSize = fontSizes[0];
+
   return (fontSize * lineHeight) / 100;
 };
 
@@ -23,17 +25,17 @@ const lem = () => {
 const responsiveFontSizes = () => {
   const { grid } = typography;
   const { fontSizes } = grid;
-  const { helpers } = responsiveness;
+  const { breakpoints, helpers } = responsiveness;
   const { breakpoint } = helpers;
 
   let responsiveSizes = [];
   fontSizes &&
-    fontSizes.map((item) => {
-      const { breakpoint: bp, fontSize } = item;
-      const query = breakpoint(bp);
-      responsiveSizes[`${query}`] = { fontSize: `${fontSize}%` };
+    fontSizes.map((item, index) => {
+      const bp = breakpoints[index];
+      const query = breakpoint(bp.name);
+      responsiveSizes[`${query}`] = { fontSize: `${item}%` };
     });
-
+  console.log("responsiveSizes:", responsiveSizes);
   return responsiveSizes;
 };
 

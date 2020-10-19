@@ -4,16 +4,12 @@ import PropTypes from "prop-types";
  * Imports other components and hooks.
  */
 import { GridPropTypes } from "./typography.grid";
-import { lem, responsiveFontSizes, font, maxWidth } from "./typography.helpers";
 import { scaleValue, scaleTo, scaleMargin, ScalePropTypes } from "./scale";
+import { FontsPropTypes, FontsDefaultProps } from "./fonts";
+import { lem, responsiveFontSizes, font, maxWidth } from "./typography.helpers";
 import { elements } from "./typography.elements";
 import { spacing } from "./typography.spacing";
 import { headings } from "./headings";
-
-/**
- * Imports fonts.
- */
-import "./fonts/fonts.css";
 
 /**
  * Defines the prop types.
@@ -29,37 +25,14 @@ const propTypes = {
    * Sets up the scale for font and element sizing.
    * @type {object}
    */
-  scale: ScalePropTypes,
+  scale: PropTypes.shape(ScalePropTypes),
   /**
-   * The list of fonts available for this theme.
+   * The list of available fonts for this theme.
    * @type {array}
    */
-  fonts: PropTypes.arrayOf(
-    PropTypes.shape({
-      /**
-       * The name of the font to be used.
-       * @type {string}
-       */
-      name: PropTypes.string,
-      /**
-       * The font family name as defined in the font css
-       * @type {string}
-       */
-      fontFamily: PropTypes.string,
-      /**
-       * The weight of the font
-       * @type {array}
-       */
-      fontWeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-      /**
-       * The font style
-       * @type {string}
-       */
-      fontStyle: PropTypes.string,
-    })
-  ),
+  fonts: PropTypes.shape(FontsPropTypes),
   /**
-   * The style objects for all typographic elements
+   * The style objects for all typographic elements like `<a>`, `<abbr>` etc.
    * @type {[type]}
    */
   elements: PropTypes.object,
@@ -75,22 +48,8 @@ const propTypes = {
  */
 const typography = {
   grid: {
-    fontSize: 100,
+    fontSizes: [100, 110, 120, 130],
     lineHeight: 1.25,
-    fontSizes: [
-      {
-        breakpoint: "tablet",
-        fontSize: 110,
-      },
-      {
-        breakpoint: "laptop",
-        fontSize: 120,
-      },
-      {
-        breakpoint: "desktop",
-        fontSize: 130,
-      },
-    ],
   },
   scale: {
     preset: "linear",

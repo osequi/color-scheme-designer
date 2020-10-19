@@ -30,7 +30,7 @@ const defaultProps = {};
  */
 const container = (theme) => {
   return {
-    fontSize: `${theme.typography.grid.fontSize}%`,
+    fontSize: `${theme.typography.grid.fontSizes[0]}%`,
     lineHeight: theme.typography.grid.lineHeight,
     ...theme.typography.helpers.responsiveFontSizes,
     "--lem": `${theme.typography.helpers.lem}em`,
