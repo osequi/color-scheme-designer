@@ -49,7 +49,7 @@ const ColorPair = (props) => {
   const { containerKlass } = useStyles([container], props);
 
   const colorContrast = contrast(color.value, backgroundColor.value);
-  const text = colorContrast > 4.51 ? "Eligible" : "Not eligible";
+  const text = colorContrast > 4.51 ? "Ok" : "";
 
   return (
     <Cell id={id} className={cx("ColorPair", containerKlass)}>

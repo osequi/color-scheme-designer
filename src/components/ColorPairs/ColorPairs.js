@@ -82,6 +82,42 @@ const ColorPairs = (props) => {
       color: color("dark"),
       backgroundColor: color("highlight"),
     },
+    {
+      id: shortid.generate(),
+      name: "shaded",
+      color: color("shade"),
+      backgroundColor: color("light"),
+    },
+    {
+      id: shortid.generate(),
+      name: "shadedInverted",
+      color: color("light"),
+      backgroundColor: color("shade"),
+    },
+    {
+      id: shortid.generate(),
+      name: "shadedDark",
+      color: color("shade"),
+      backgroundColor: color("dark"),
+    },
+    {
+      id: shortid.generate(),
+      name: "shadedDarkInverted",
+      color: color("dark"),
+      backgroundColor: color("shade"),
+    },
+    {
+      id: shortid.generate(),
+      name: "shadedHighlighted",
+      color: color("shade"),
+      backgroundColor: color("highlight"),
+    },
+    {
+      id: shortid.generate(),
+      name: "shadedHighlightedInverted",
+      color: color("highlight"),
+      backgroundColor: color("shade"),
+    },
   ];
 
   const colorPairsList =
