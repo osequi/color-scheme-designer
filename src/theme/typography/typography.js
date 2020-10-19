@@ -93,7 +93,7 @@ const typography = {
     ],
   },
   scale: {
-    preset: "modular",
+    preset: "linear",
   },
   fonts: [
     {
@@ -101,18 +101,21 @@ const typography = {
       fontFamily: "nimbus-sans",
       fontWeight: 300,
       fontStyle: "normal",
+      letterSpacing: "1.25px",
     },
     {
       name: "Nimbus Sans Regular",
       fontFamily: "nimbus-sans",
       fontWeight: 400,
       fontStyle: "normal",
+      letterSpacing: "1.25px",
     },
     {
       name: "Nimbus Sans Medium",
       fontFamily: "nimbus-sans",
       fontWeight: 500,
       fontStyle: "normal",
+      letterSpacing: "1.25px",
     },
   ],
   elements: elements,

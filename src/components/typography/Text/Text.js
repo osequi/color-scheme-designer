@@ -69,7 +69,7 @@ const bodyText = (props, theme) => {
         preset: "sameSize",
         font: "Nimbus Sans Medium",
         lineHeight: 1,
-        scale: 1,
+        scale: 0,
       },
       theme
     ),
@@ -97,6 +97,7 @@ const longformText = (props, theme) => {
 
 const titleText = (props, theme) => {
   return {
+    ...theme.typography.helpers.font("Nimbus Sans Regular"),
     ...theme.typography.helpers.scale(1),
   };
 };

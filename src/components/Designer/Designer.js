@@ -10,6 +10,7 @@ import Colors, { ColorsPropTypes, ColorsDefaultProps } from "../Colors";
 import ColorPairs from "../ColorPairs";
 import Grid from "../layout/Grid";
 import { Section } from "../semantic-elements";
+import { Text } from "../typography";
 
 /**
  * Defines the prop types.
@@ -48,7 +49,7 @@ const Designer = (props) => {
 
   const sectionProps = {
     heading: { level: 1 },
-    title: "Color Scheme Designer",
+    title: <Text variant="title">Color Scheme Designer</Text>,
     display: true,
   };
 
