@@ -46,7 +46,11 @@ const Designer = (props) => {
    */
   const { containerKlass } = useStyles([container], colors);
 
-  const sectionProps = { title: "Color Scheme Designer", display: true };
+  const sectionProps = {
+    heading: { level: 1 },
+    title: "Color Scheme Designer",
+    display: true,
+  };
 
   return (
     <Grid

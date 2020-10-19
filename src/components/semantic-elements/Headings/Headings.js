@@ -26,7 +26,7 @@ const propTypes = {
  * Defines the default props
  */
 const defaultProps = {
-  level: 3,
+  level: 2,
   display: true,
   children: null,
 };
