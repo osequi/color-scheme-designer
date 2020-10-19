@@ -11,7 +11,7 @@ import { startCase } from "lodash";
  * Accessing and styling directly standard tags like '<H1>' is not recommended.
  * @type {Array}
  */
-const variants = ["default", "body", "longform", "title"];
+const variants = ["default", "body", "longform", "title", "subtitle"];
 
 /**
  * Defines the prop types.
@@ -102,6 +102,13 @@ const titleText = (props, theme) => {
   };
 };
 
+const subtitleText = (props, theme) => {
+  return {
+    ...theme.typography.helpers.font("Nimbus Sans Black"),
+    ...theme.typography.helpers.scale(0),
+  };
+};
+
 /**
  * Displays content inside a Text container.
  * @see Text.md
@@ -115,13 +122,24 @@ const Text = (props) => {
     bodyTextKlass,
     longformTextKlass,
     titleTextKlass,
-  } = useStyles([bodyText, longformText, titleText], props, theme);
+    subtitleTextKlass,
+  } = useStyles(
+    [defaultText, bodyText, longformText, titleText, subtitleText],
+    props,
+    theme
+  );
 
   /**
    * Finds the class for the variant.
    */
   const klass = useFindInArrays(
-    [defaultTextKlass, bodyTextKlass, longformTextKlass, titleTextKlass],
+    [
+      defaultTextKlass,
+      bodyTextKlass,
+      longformTextKlass,
+      titleTextKlass,
+      subtitleTextKlass,
+    ],
     variants,
     variant
   );

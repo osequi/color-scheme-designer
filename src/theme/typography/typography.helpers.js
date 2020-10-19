@@ -57,7 +57,7 @@ const responsiveGridColumns = (columns) => {
       const bp = breakpoints[index];
       const query = breakpoint(bp.name);
       queries[`${query}`] = {
-        gridTemplateColumns: `repeat(${item}, 1fr)`,
+        gridTemplateColumns: `repeat(${item}, calc(100% / ${item}))`,
       };
     });
 

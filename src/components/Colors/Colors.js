@@ -10,6 +10,7 @@ import shortid from "shortid";
 import Color, { ColorPropTypes } from "../Color";
 import { Grid } from "../layout/";
 import { Section } from "../semantic-elements/";
+import { Text } from "../typography";
 
 /**
  * Defines the prop types.
@@ -52,14 +53,18 @@ const Colors = (props) => {
       return <Color key={id} numberOfItems={colors.length} {...item} />;
     });
 
-  const sectionProps = { title: "Colors", display: true };
+  const asProps = {
+    title: <Text variant="subtitle">Colors</Text>,
+    heading: { level: 2 },
+    display: true,
+  };
 
   return (
     <Grid
       columns={[2, 4]}
       className={cx("Colors", containerKlass)}
       as={Section}
-      asProps={sectionProps}
+      asProps={asProps}
     >
       {colorsList}
     </Grid>

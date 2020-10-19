@@ -10,7 +10,7 @@ const App = () => (
   <ThemeContext.Provider value={theme}>
     <Setup />
     <TypographicGrid />
-    <Text variant="body">
+    <Text>
       <Designer />
     </Text>
   </ThemeContext.Provider>

@@ -82,6 +82,13 @@ const typography = {
       fontStyle: "normal",
       letterSpacing: "1.25px",
     },
+    {
+      name: "Nimbus Sans Black",
+      fontFamily: "nimbus-sans",
+      fontWeight: 600,
+      fontStyle: "normal",
+      letterSpacing: "1.25px",
+    },
   ],
   elements: elements,
 };

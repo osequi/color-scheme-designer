@@ -31,13 +31,9 @@ const defaultProps = {
  * Defines the styles.
  */
 const container = (props) => {
-  const height = 100 / props.numberOfItems;
-
   return {
     width: "100%",
-    height: `${height}vw`,
-    //maxWidth: `calc(5 * var(--lem))`,
-    //maxHeight: `calc(5 * var(--lem))`,
+    height: `calc(var(--lem) * 10)`,
     backgroundColor: props.value,
   };
 };
