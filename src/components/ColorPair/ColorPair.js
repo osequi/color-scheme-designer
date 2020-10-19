@@ -8,6 +8,7 @@ import { useStyles } from "../../hooks";
  */
 import Cell from "../layout/Cell";
 import Grid from "../layout/Grid";
+import { Article } from "../semantic-elements";
 
 /**
  * Defines the prop types.
@@ -50,15 +51,18 @@ const ColorPair = (props) => {
   const { containerKlass } = useStyles([container], props);
 
   const text = contrast > 4.51 ? "Ok" : "";
+  const articleProps = { title: name };
 
   return (
-    <Cell id={id} className={cx("ColorPair", containerKlass)}>
-      <Grid columns={1}>
-        <p>{name}</p>
-        <p>
-          {contrast.toFixed(2)} {text}
-        </p>
-      </Grid>
+    <Cell
+      id={id}
+      className={cx("ColorPair", containerKlass)}
+      as={Article}
+      asProps={articleProps}
+    >
+      <p>
+        {contrast.toFixed(2)} {text}
+      </p>
     </Cell>
   );
 };

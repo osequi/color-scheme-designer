@@ -69,11 +69,17 @@ const ColorPairs = (props) => {
       );
     });
 
+  const section0Props = { title: "Color pairs" };
   const section1Props = { title: "Legible color pairs", display: true };
   const section2Props = { title: "Not legible color pairs", display: true };
 
   return (
-    <Grid columns={1} className={cx("ColorPairs", containerKlass)}>
+    <Grid
+      columns={1}
+      className={cx("ColorPairs", containerKlass)}
+      as={Section}
+      asProps={section0Props}
+    >
       <Grid className="Legibles" as={Section} asProps={section1Props}>
         {legibleColorPairsList}
       </Grid>

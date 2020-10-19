@@ -9,6 +9,7 @@ import { useStyles } from "../../hooks";
 import Colors, { ColorsPropTypes, ColorsDefaultProps } from "../Colors";
 import ColorPairs from "../ColorPairs";
 import Grid from "../layout/Grid";
+import { Section } from "../semantic-elements";
 
 /**
  * Defines the prop types.
@@ -45,8 +46,15 @@ const Designer = (props) => {
    */
   const { containerKlass } = useStyles([container], colors);
 
+  const sectionProps = { title: "Color Scheme Designer", display: true };
+
   return (
-    <Grid columns={1} className={cx("Designer", containerKlass)}>
+    <Grid
+      columns={1}
+      className={cx("Designer", containerKlass)}
+      as={Section}
+      asProps={sectionProps}
+    >
       <Colors {...colors} />
       <ColorPairs {...colors} />
     </Grid>
