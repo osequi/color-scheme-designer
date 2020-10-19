@@ -7,7 +7,7 @@ import shortid from "shortid";
 /**
  * Imports other components and hooks.
  */
-import Color, { ColorPropTypes, ColorDefaultProps } from "../Color";
+import Color, { ColorPropTypes } from "../Color";
 import Grid from "../layout/Grid";
 import { Section } from "../semantic-elements/";
 

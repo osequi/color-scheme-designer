@@ -7,7 +7,6 @@ import { useStyles } from "../../hooks";
  * Imports other components and hooks.
  */
 import Cell from "../layout/Cell";
-import Grid from "../layout/Grid";
 import { Article } from "../semantic-elements";
 
 /**

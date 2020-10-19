@@ -19,14 +19,14 @@ import { Section } from "../semantic-elements/";
  * Defines the prop types.
  */
 const propTypes = {
-  colors: PropTypes.shape(ColorsPropTypes),
+  ...ColorsPropTypes,
 };
 
 /**
  * Defines the default props.
  */
 const defaultProps = {
-  colors: ColorsDefaultProps,
+  ...ColorsDefaultProps,
 };
 
 /**
