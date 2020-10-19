@@ -55,6 +55,7 @@ const defaultText = (props, theme) => {
   return {
     ...theme.typography.helpers.scale(0),
     ...theme.typography.helpers.font("Nimbus Sans Light"),
+    margin: "var(--lem)",
   };
 };
 
@@ -107,6 +108,7 @@ const subtitleText = (props, theme) => {
   return {
     ...theme.typography.helpers.font("Nimbus Sans Black"),
     ...theme.typography.helpers.scale(0),
+    textTransform: "uppercase",
     margin: "var(--lem) 0",
   };
 };

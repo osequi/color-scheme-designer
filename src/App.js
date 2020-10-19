@@ -1,7 +1,7 @@
 import React, { createContext } from "react";
 
 import theme from "./theme";
-import Designer from "./components/Designer";
+import Home from "./components/Home";
 import { Setup, Text, TypographicGrid } from "./components/typography";
 
 const ThemeContext = createContext();
@@ -9,9 +9,9 @@ const ThemeContext = createContext();
 const App = () => (
   <ThemeContext.Provider value={theme}>
     <Setup />
-    <TypographicGrid />
+    {/*<TypographicGrid />*/}
     <Text>
-      <Designer />
+      <Home />
     </Text>
   </ThemeContext.Provider>
 );

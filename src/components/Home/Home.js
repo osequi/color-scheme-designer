@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { cx } from "emotion";
 import { useStyles } from "../../hooks";
@@ -6,6 +6,8 @@ import { useStyles } from "../../hooks";
 /**
  * Imports other components and hooks.
  */
+import Designer from "../Designer";
+import Presenter from "../Presenter";
 import { Grid } from "../layout";
 import { Section } from "../semantic-elements";
 import { Text } from "../typography";
@@ -29,28 +31,32 @@ const container = {
 
 /**
  * Displays the component.
- * @see Designer.md
+ * @see Home.md
  */
-const Designer = (props) => {
+const Home = (props) => {
   const { containerKlass } = useStyles([container], props);
 
   const asProps = {
-    title: "The designer",
+    heading: { level: 1 },
+    title: <Text variant="title">Color Scheme Designer</Text>,
+    display: true,
   };
 
   return (
     <Grid
-      className={cx("Designer", containerKlass)}
+      columns={[1, 1, 1, 2]}
+      className={cx("Home", containerKlass)}
       as={Section}
       asProps={asProps}
     >
-      xxx
+      <Presenter />
+      <Designer />
     </Grid>
   );
 };
 
-Designer.propTypes = propTypes;
-Designer.defaultProps = defaultProps;
+Home.propTypes = propTypes;
+Home.defaultProps = defaultProps;
 
-export default Designer;
-export { propTypes as DesignerPropTypes, defaultProps as DesignerDefaultProps };
+export default Home;
+export { propTypes as HomePropTypes, defaultProps as HomeDefaultProps };
