@@ -1,4 +1,5 @@
 import ms from "modularscale-js";
+import { isArray } from "lodash";
 
 /**
  * Imports other components and hooks.
@@ -29,14 +30,38 @@ const responsiveFontSizes = () => {
   const { breakpoint } = helpers;
 
   let responsiveSizes = [];
+
   fontSizes &&
     fontSizes.map((item, index) => {
       const bp = breakpoints[index];
       const query = breakpoint(bp.name);
       responsiveSizes[`${query}`] = { fontSize: `${item}%` };
     });
-  console.log("responsiveSizes:", responsiveSizes);
+
   return responsiveSizes;
+};
+
+/**
+ * Creates media queries for responsive grid columns
+ */
+const responsiveGridColumns = (columns) => {
+  const { breakpoints, helpers } = responsiveness;
+  const { breakpoint } = helpers;
+
+  const responsiveColumns = isArray(columns) ? columns : [columns];
+
+  let queries = [];
+
+  responsiveColumns &&
+    responsiveColumns.map((item, index) => {
+      const bp = breakpoints[index];
+      const query = breakpoint(bp.name);
+      queries[`${query}`] = {
+        gridTemplateColumns: `repeat(${item}, 1fr)`,
+      };
+    });
+
+  return queries;
 };
 
 /**
@@ -77,4 +102,4 @@ const maxWidth = (value) => {
   };
 };
 
-export { lem, responsiveFontSizes, font, maxWidth };
+export { lem, responsiveFontSizes, responsiveGridColumns, font, maxWidth };

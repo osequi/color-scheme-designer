@@ -1,7 +1,7 @@
 import React, { createElement } from "react";
 import PropTypes from "prop-types";
 import { cx } from "emotion";
-import { useStyles } from "../../../hooks";
+import { useStyles, useTheme } from "../../../hooks";
 
 /**
  * Defines the prop types
@@ -19,10 +19,12 @@ const propTypes = {
   height: PropTypes.string,
   /**
    * The number of columns, unitless.
-   * The columns will be calculated useing `grid-template-columns: repeat(x, 1fr)`
+   * The columns will be calculated using `grid-template-columns: repeat(columns, 1fr)`
+   * When the columns is an array a responsive grid will be set up.
+   * @example <Grid columns={[1,2]}> => 1 column grid on the first breakpoint, 2 column grid on the second breakpoint. Breakpoints are coming from the theme.
    * @type {string}
    */
-  columns: PropTypes.number,
+  columns: PropTypes.oneOfType(PropTypes.number, PropTypes.array),
   /**
    * The gap between the cells, unitless.
    * The gap will be a multiply of `var(--lem)`
@@ -73,11 +75,11 @@ const defaultProps = {
 /**
  * Defines the grid container styles.
  */
-const container = (props) => ({
+const container = (props, theme) => ({
   display: "grid",
   width: `${props.width}`,
   height: `${props.height}`,
-  gridTemplateColumns: `repeat(${props.columns}, 1fr)`,
+  ...theme.typography.helpers.responsiveGridColumns(props.columns),
   columnGap: props.borderLeftSelector ? 0 : `calc(${props.gap} * var(--lem))`,
   rowGap: props.borderLeftSelector ? 0 : `calc(${props.gap} * var(--lem))`,
 
@@ -154,6 +156,7 @@ const gridWithTitle = (props) => ({
  */
 const Grid = (props) => {
   const { columns, fauxLines, as, asProps, children } = props;
+  const theme = useTheme();
 
   /**
    * Displays the faux lines.
@@ -168,7 +171,8 @@ const Grid = (props) => {
     {
       ...props,
       ...fauxLinesProps,
-    }
+    },
+    theme
   );
 
   /**

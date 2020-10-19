@@ -6,7 +6,13 @@ import PropTypes from "prop-types";
 import { GridPropTypes } from "./typography.grid";
 import { scaleValue, scaleTo, scaleMargin, ScalePropTypes } from "./scale";
 import { FontsPropTypes, FontsDefaultProps } from "./fonts";
-import { lem, responsiveFontSizes, font, maxWidth } from "./typography.helpers";
+import {
+  lem,
+  responsiveFontSizes,
+  responsiveGridColumns,
+  font,
+  maxWidth,
+} from "./typography.helpers";
 import { elements } from "./typography.elements";
 import { spacing } from "./typography.spacing";
 import { headings } from "./headings";
@@ -87,6 +93,7 @@ const typography = {
 const helpers = {
   lem: lem(),
   responsiveFontSizes: responsiveFontSizes(),
+  responsiveGridColumns: (columns) => responsiveGridColumns(columns),
   font: (name) => font(name),
   maxWidth: (value) => maxWidth(value),
   scale: (value, settings) =>
