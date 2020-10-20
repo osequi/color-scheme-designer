@@ -7,7 +7,7 @@ import { startCase } from "lodash";
 /**
  * Imports other components and hooks.
  */
-import { Cell } from "../layout";
+import { Cell, Grid } from "../layout";
 import { Article } from "../semantic-elements";
 
 /**
@@ -45,7 +45,7 @@ const container = (props) => {
  * @see Color.md
  */
 const Color = (props) => {
-  const { id, name } = props;
+  const { id, name, value, content } = props;
   const { containerKlass } = useStyles([container], props);
 
   const asProps = { title: startCase(name) };
@@ -56,7 +56,12 @@ const Color = (props) => {
       className={cx("Color", containerKlass)}
       as={Article}
       asProps={asProps}
-    />
+    >
+      <Grid>
+        <p>{value}</p>
+        {content}
+      </Grid>
+    </Cell>
   );
 };
 

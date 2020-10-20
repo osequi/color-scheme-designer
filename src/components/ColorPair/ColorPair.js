@@ -47,13 +47,16 @@ const container = (props, theme) => {
  * @see ColorPair.md
  */
 const ColorPair = (props) => {
-  const { id, name, contrast } = props;
+  const { id, name, contrast, content } = props;
+
   const theme = useTheme();
   const { containerKlass } = useStyles([container], props, theme);
 
   const asProps = { title: name };
 
-  return (
+  return content ? (
+    <div className={cx("ColorPair", containerKlass)}>{content}</div>
+  ) : (
     <Cell
       id={id}
       className={cx("ColorPair", containerKlass)}
