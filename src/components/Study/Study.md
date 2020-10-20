@@ -14,7 +14,7 @@ Once a color pairs up with another color they start to differ; they become engag
 
 Their interaction is complex but is foremost about contrast and hierarchy. Which is the dominating color bringing forward it's content? Or a dominated color bringing into background it's content?
 
-Hierarchy exists on a monochromatic composition. Two colors provide and endless number of shades, combinations. Vivid colors&mdash;to differentiate, to bring in the mood&mdash;are mandatory on request, from case to case.
+Hierarchy exists on a monochromatic composition. Two colors provide and endless number of shades, combinations. Vivid colors&mdash;to differentiate, to bring in the mood&mdash;are mandatory on request, from case to case, taste to taste.
 
 Source: [It's Only Color](https://robots.thoughtbot.com/Its-only-color).
 
