@@ -1,46 +1,57 @@
 # # Color Scheme Designer
 
-The goal of this project is to create a yet another color scheme designer tailored exclusively for websites.
-[Paletton](http://paletton.com/) is very good but the live examples are awful.
+The goal of this project is to create a yet another color scheme designer tailored for websites.
+[Paletton](http://paletton.com/) is good a good designer with awful live examples.
 
 This color designer interacts directly with the underlying live example, an example showing all common elements a web page might have.
 This way it makes fine tuning the palette more easier, and, on the fly.
 
 ## ## Practice
 
-In typography, on the web, colors don't exist alone. There is no white on white. There is _something_ on white.
+In typography, on the web, colors don't exist alone. White on white is white. _Something_ must be on white.
 
-Once a color is paired with another color they differ; they become engaged in a relationship. They interact.
+Once a color pairs up with another color they start to differ; they become engaged in a relationship. They interact.
 
-Their interaction is multiple but most importantly is about contrast / hierarchy. Which is the dominating color bringing forward it's content? Or a dominated color bringing into background it's content?
+Their interaction is complex but is foremost about contrast and hierarchy. Which is the dominating color bringing forward it's content? Or a dominated color bringing into background it's content?
 
-Hierarchy exists on a monochromatic composition too; we don't have to add vivid colors to differentiate. Vivid colors are—only and only—to bring in the mood.
+Hierarchy exists on a monochromatic composition. No need for vivid colors to differentiate. Vivid colors bring in the mood.
 
 Source: [It's Only Color](https://robots.thoughtbot.com/Its-only-color).
 
 ### ### Primary colors
 
-A light color for background and a dark color for text—the primary colors—are enough to form a color scheme.
+A light color for background WHITE and a dark color for text BLACK—the primary colors—are enough to form a color scheme.
+
+COLOR SCHEME WITH ONLY THE PRIMARIES ACTIVE
 
 The two provides combinations—normal text, inverted text, underlined text, bordered text—enough to style a blog.
 
+THE LIST OF COMBINATIONS
+CLICK TO BRING IN THE BLOG
+
 ### ### Secondary colors
 
-Primary colors provide only a monochromatic experience. Secondary colors—for highlighting and shading—bring in the full experience.
+Primary colors provide a monochromatic experience. Secondary colors—for highlighting and shading—bring in the a vivid experience.
 
-Four colors provide sixteen combinations. Even if a few of them are not legible the rest is enough to style a marketing website.
+COLOR SCHEME WITH ALSO THE SECONDARIES ACTIVE
+
+Four colors provide sixteen combinations. Even if not all are legible the rest is enough to style a marketing site.
+
+THE LIST OF COMBINATIONS
+CLICK TO BRING IN THE MARKETING SITE.
 
 ## ## Theory
 
-Colors interact. Either they complement each other or make a very visible contrast.
+Colors interact. Either they complement each other or make a visible contrast.
 For every website the task is to find a set of colors which complement well and contrast well.
 
 ### ### Color models and spaces
 
-There are many different approaches to create a certain set of colors. Pantone for print, RGB for digital displays are such examples.
+Different approaches exist to create certain sets of colors. Pantone for print, RGB for digital displays are such examples.
 
 Every color space produces different set of colors using different techniques.
-There are absolute color spaces containing all colors or others containing just a subset of colors matching the target device's&mdash;printer, low-resolution screen, high resolution screen&mdash;capability.
+
+Absolute color spaces encapsulate all colors; others contains a subset of colors matching the target device's&mdash;printer, low-resolution screen, high resolution screen&mdash;capability.
 
 Sometimes conversion is possible between different color spaces and sometimes not.
 
@@ -57,12 +68,12 @@ In CMYK the default color of the canvas (the paper) is white. Adding a color dar
 Colors have different properties like saturation, lightness, luminosity, temperature, contrast etc.
 Some of these are absolute properties (luminosity, temperature), others relative to another color:
 
-- Saturation: how many `gray` the color has
-- Lightness: how many `black` and `white` the color has
-- Contrast: the perceptual difference to another color
+- Saturation: how much `gray` the color has.
+- Lightness: how much `black` and `white` the color has.
+- Contrast: the perceptual difference to another color.
 
-In the case of relative properties there is always another color.
-In the case of saturation and lightness the other color is predefined: white, gray and black, ie. special colors from the start, middle and end of the full color spectrum.
+For relative properties there is always another color.
+For saturation and lightness the other color is white, gray and black, the special colors from the start, middle and end of the color spectrum.
 
 ### ### Color mixing and manipulation
 
