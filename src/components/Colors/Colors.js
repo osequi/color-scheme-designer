@@ -111,7 +111,7 @@ const Colors = (props) => {
 
   return (
     <Grid
-      columns={[2, 4]}
+      columns={[1, 2, 4]}
       className={cx("Colors", containerKlass)}
       as={Section}
       asProps={asProps}
