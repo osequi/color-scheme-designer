@@ -1,7 +1,7 @@
 # # Color Scheme Designer
 
 The goal of this project is to create a yet another color scheme designer tailored for websites.
-[Paletton](http://paletton.com/) is good a good designer with awful live examples.
+[Paletton](http://paletton.com/) is a good approach with awful live examples.
 
 This color designer interacts directly with the underlying live example, an example showing all common elements a web page might have.
 This way it makes fine tuning the palette more easier, and, on the fly.
@@ -14,7 +14,7 @@ Once a color pairs up with another color they start to differ; they become engag
 
 Their interaction is complex but is foremost about contrast and hierarchy. Which is the dominating color bringing forward it's content? Or a dominated color bringing into background it's content?
 
-Hierarchy exists on a monochromatic composition. No need for vivid colors to differentiate. Vivid colors bring in the mood.
+Hierarchy exists on a monochromatic composition. Two colors provide and endless number of shades, combinations. Vivid colors&mdash;to differentiate, to bring in the mood&mdash;are mandatory on request, from case to case.
 
 Source: [It's Only Color](https://robots.thoughtbot.com/Its-only-color).
 
