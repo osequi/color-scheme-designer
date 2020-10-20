@@ -54,8 +54,8 @@ const propTypes = {
  */
 const typography = {
   grid: {
-    fontSizes: [100, 110, 120, 130],
-    lineHeight: 1.25,
+    fontSizes: [100, 110, 140, 170],
+    lineHeight: 1.5,
   },
   scale: {
     preset: "linear",

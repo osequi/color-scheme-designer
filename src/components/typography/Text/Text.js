@@ -80,15 +80,15 @@ const bodyText = (props, theme) => {
 const longformText = (props, theme) => {
   return {
     ...theme.typography.helpers.scale(0),
-    ...theme.typography.helpers.font("Nimbus Sans Regular"),
-    ...theme.typography.helpers.maxWidth("Nimbus Sans Regular"),
+    ...theme.typography.helpers.font("Nimbus Sans Light"),
+    ...theme.typography.helpers.maxWidth("Nimbus Sans Light"),
     ...theme.typography.helpers.spacing("Adjacent siblings margin top"),
     ...theme.typography.helpers.headings(
       {
-        preset: "differentSizes",
-        font: "Nimbus Sans Medium",
+        preset: "sameSize",
+        font: "Nimbus Sans Light",
         lineHeight: 1,
-        scales: [1, 2, 3, 4, 5, 6],
+        scale: 0,
       },
       theme
     ),

@@ -97,7 +97,7 @@ const font = (name) => {
 const maxWidth = (value) => {
   return {
     ["& > * :not(h1):not(h2):not(h3):not(h4):not(h5):not(h6)"]: {
-      maxWidth: `calc(35*var(--lem))`,
+      maxWidth: `calc(25 * var(--lem))`,
     },
   };
 };

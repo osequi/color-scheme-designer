@@ -6,6 +6,7 @@ import { useStyles } from "../../hooks";
 /**
  * Imports other components and hooks.
  */
+import Study from "../Study";
 import Designer from "../Designer";
 import Presenter from "../Presenter";
 import { Grid } from "../layout";
@@ -38,17 +39,18 @@ const Home = (props) => {
 
   const asProps = {
     heading: { level: 1 },
-    title: <Text variant="title">Color Scheme Designer</Text>,
-    display: true,
+    title: "Color Scheme Designer",
+    display: false,
   };
 
   return (
     <Grid
-      columns={[1, 1, 1, 2]}
+      columns={1}
       className={cx("Home", containerKlass)}
       as={Section}
       asProps={asProps}
     >
+      <Study />
       <Presenter />
       <Designer />
     </Grid>
