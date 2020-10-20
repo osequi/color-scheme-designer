@@ -34,7 +34,7 @@ const defaultProps = {
 const container = (props) => {
   return {
     width: "100%",
-    height: `calc(var(--lem) * 10)`,
+    //height: `calc(var(--lem) * 10)`,
     backgroundColor: props.value,
     color: props.pair.value,
   };

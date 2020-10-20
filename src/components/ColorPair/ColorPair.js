@@ -6,7 +6,7 @@ import { useStyles, useTheme } from "../../hooks";
 /**
  * Imports other components and hooks.
  */
-import { Cell } from "../layout/";
+import { Cell, Grid } from "../layout/";
 import { Article } from "../semantic-elements";
 
 /**
@@ -55,7 +55,9 @@ const ColorPair = (props) => {
   const asProps = { title: name };
 
   return content ? (
-    <div className={cx("ColorPair", containerKlass)}>{content}</div>
+    <Cell id={id} padding={0} className={cx("ColorPair", containerKlass)}>
+      {content}
+    </Cell>
   ) : (
     <Cell
       id={id}

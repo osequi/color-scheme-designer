@@ -42,16 +42,35 @@ const container = {
 
 /**
  * Returns an array of color pairs connected by their name.
- * Example: ('light', legible) => ['dark on light', 'highlight on light']
+ * Example: ('light', colorPairs) => ['dark on light', 'highlight on light', ...]
  */
-const findLegibleColorSiblings = (color, legible) => {
+const findColorPairSiblings = (color, colorPairs) => {
   const { name } = color;
 
   const siblings =
-    legible &&
-    legible.filter((item) => item.name.includes(`on ${startCase(name)}`));
+    colorPairs &&
+    colorPairs.filter((item) => item.name.includes(`on ${startCase(name)}`));
 
   return siblings;
+};
+
+/**
+ * Displays color siblings with the `<ColorPair>` component
+ */
+const displayColorSiblings = (siblings) => {
+  const cells =
+    siblings &&
+    siblings.map((item) => {
+      const { name, contrast } = item;
+
+      // Light on Dark => Light
+      const nameSimplified = name.split(" ")[0];
+
+      const content = `${nameSimplified} — ${contrast}`;
+      return <ColorPair {...item} content={content} />;
+    });
+
+  return <Grid gap={0}>{cells}</Grid>;
 };
 
 /**
@@ -62,7 +81,8 @@ const Colors = (props) => {
   const { colors } = props;
   const { containerKlass } = useStyles([container], props);
 
-  const { legible } = useColorPairs(colors);
+  const { legible, notLegible } = useColorPairs(colors);
+  const colorPairs = [...legible, ...notLegible];
 
   /**
    * Defines the other color to pair with.
@@ -75,18 +95,10 @@ const Colors = (props) => {
     colors &&
     colors.map((item, index) => {
       const { id } = item;
+
       const pair = pairs[index];
-
-      const legibleColorSiblings = findLegibleColorSiblings(item, legible);
-
-      const content =
-        legibleColorSiblings &&
-        legibleColorSiblings.map((item) => {
-          const { name, contrast } = item;
-          const nameSimplified = name.split(" ")[0];
-          const content = `${nameSimplified}: ${contrast}`;
-          return <ColorPair {...item} content={content} />;
-        });
+      const siblings = findColorPairSiblings(item, colorPairs);
+      const content = displayColorSiblings(siblings);
 
       return <Color key={id} pair={pair} content={content} {...item} />;
     });

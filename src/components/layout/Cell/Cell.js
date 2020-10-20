@@ -35,6 +35,11 @@ const propTypes = {
    * @type {object}
    */
   asProps: PropTypes.object,
+  /**
+   * The padding of the cells.
+   * @type {number}
+   */
+  padding: PropTypes.string,
   children: PropTypes.any,
   /**
    * The className of the element.
@@ -53,6 +58,7 @@ const defaultProps = {
   name: null,
   as: "div",
   asProps: null,
+  padding: 1,
   children: null,
   className: "Cell",
 };
@@ -61,7 +67,7 @@ const defaultProps = {
  * Defines the styles.
  */
 const container = (props) => ({
-  padding: "var(--lem)",
+  padding: `calc(${props.padding} * var(--lem))`,
 });
 
 /**
