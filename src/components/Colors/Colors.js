@@ -46,11 +46,17 @@ const Colors = (props) => {
   const { colors } = props;
   const { containerKlass } = useStyles([container], props);
 
+  /**
+   * Defines the other color to pair with
+   * @type {Array}
+   */
+  const pairs = [colors[1], colors[0], colors[0], colors[1]];
+
   const colorsList =
     colors &&
-    colors.map((item) => {
+    colors.map((item, index) => {
       const { id } = item;
-      return <Color key={id} numberOfItems={colors.length} {...item} />;
+      return <Color key={id} pair={pairs[index]} {...item} />;
     });
 
   const asProps = {

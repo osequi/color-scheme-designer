@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { cx } from "emotion";
 import { useStyles } from "../../hooks";
+import { startCase } from "lodash";
 
 /**
  * Imports other components and hooks.
@@ -35,6 +36,7 @@ const container = (props) => {
     width: "100%",
     height: `calc(var(--lem) * 10)`,
     backgroundColor: props.value,
+    color: props.pair.value,
   };
 };
 
@@ -46,7 +48,7 @@ const Color = (props) => {
   const { id, name } = props;
   const { containerKlass } = useStyles([container], props);
 
-  const asProps = { title: name };
+  const asProps = { title: startCase(name) };
 
   return (
     <Cell
