@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { cx } from "emotion";
-import { useStyles } from "../../hooks";
+import { useStyles, useTheme } from "../../hooks";
 
 /**
  * Imports other components and hooks.
@@ -17,7 +17,7 @@ const propTypes = {
   name: PropTypes.string,
   color: PropTypes.string,
   backgroundColor: PropTypes.string,
-  contrast: PropTypes.number,
+  contrast: PropTypes.string,
 };
 
 /**
@@ -28,16 +28,17 @@ const defaultProps = {
   name: "default",
   color: "black",
   backgroundColor: "white",
-  contrast: 10,
+  contrast: "",
 };
 
 /**
  * Defines the styles.
  */
-const container = (props) => {
+const container = (props, theme) => {
   return {
     color: props.color,
     backgroundColor: props.backgroundColor,
+    ...theme.typography.helpers.scale(props.scale),
   };
 };
 
@@ -47,21 +48,19 @@ const container = (props) => {
  */
 const ColorPair = (props) => {
   const { id, name, contrast } = props;
-  const { containerKlass } = useStyles([container], props);
+  const theme = useTheme();
+  const { containerKlass } = useStyles([container], props, theme);
 
-  const text = contrast > 4.51 ? "Ok" : "";
-  const articleProps = { title: name };
+  const asProps = { title: name };
 
   return (
     <Cell
       id={id}
       className={cx("ColorPair", containerKlass)}
       as={Article}
-      asProps={articleProps}
+      asProps={asProps}
     >
-      <p>
-        {contrast.toFixed(2)} {text}
-      </p>
+      <p>{contrast}</p>
     </Cell>
   );
 };

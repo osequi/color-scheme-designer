@@ -73,12 +73,18 @@ const ColorPairs = (props) => {
   const section0Props = { title: <Text variant="subtitle">Color pairs</Text> };
 
   const section1Props = {
-    title: <Text variant="subtitle">Legible color pairs</Text>,
+    title: (
+      <Text variant="subtitle">Legible color pairs ({legible.length})</Text>
+    ),
     display: true,
   };
 
   const section2Props = {
-    title: <Text variant="subtitle">Not legible color pairs</Text>,
+    title: (
+      <Text variant="subtitle">
+        Not legible color pairs ({notLegible.length})
+      </Text>
+    ),
     display: true,
   };
 

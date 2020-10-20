@@ -1,12 +1,5 @@
-import { contrast } from "chroma-js";
 import { startCase } from "lodash";
-
-/**
- * The color contrast treshold value.
- * Above the text is legible, below is not.
- * @type {Number}
- */
-const colorContrastTreshhold = 4.51;
+import { hex, score } from "wcag-contrast";
 
 /**
  * Generates a set of color pairs from a set of colors.
@@ -25,13 +18,15 @@ const generateColorPairs = (colors) => {
 
       if (valueI === valueJ) break;
 
-      const colorContrast = contrast(valueI, valueJ);
+      const colorContrast = score(hex(valueI, valueJ));
+      const scale = colorContrast.includes("Large") ? 1 : 0;
 
       const pair1 = {
         name: `${startCase(nameI)} on ${startCase(nameJ)}`,
         color: valueI,
         backgroundColor: valueJ,
         contrast: colorContrast,
+        scale: scale,
       };
 
       const pair2 = {
@@ -39,19 +34,18 @@ const generateColorPairs = (colors) => {
         color: valueJ,
         backgroundColor: valueI,
         contrast: colorContrast,
+        scale: scale,
       };
 
-      if (colorContrast <= colorContrastTreshhold) {
-        notLegible.push(pair1);
-        notLegible.push(pair2);
+      if (colorContrast === "Fail") {
+        notLegible.push([pair1, pair2]);
       } else {
-        legible.push(pair1);
-        legible.push(pair2);
+        legible.push([pair1, pair2]);
       }
     }
   }
 
-  return { legible: legible, notLegible: notLegible };
+  return { legible: legible.flat(), notLegible: notLegible.flat() };
 };
 
 /**

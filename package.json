@@ -7,7 +7,6 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
-    "chroma-js": "^2.1.0",
     "dompurify": "^2.1.1",
     "emotion": "^10.0.27",
     "marked": "^1.2.0",
@@ -17,7 +16,8 @@
     "react-dom": "^16.14.0",
     "react-helmet": "^6.1.0",
     "react-scripts": "3.4.3",
-    "shortid": "^2.2.15"
+    "shortid": "^2.2.15",
+    "wcag-contrast": "^3.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
