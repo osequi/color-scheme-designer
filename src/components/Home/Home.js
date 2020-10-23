@@ -51,8 +51,6 @@ const Home = (props) => {
       asProps={asProps}
     >
       <Designer />
-      <Study />
-      <Presenter />
     </Grid>
   );
 };

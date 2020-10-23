@@ -6,6 +6,10 @@ import { useStyles } from "../../hooks";
 /**
  * Imports other components and hooks.
  */
+import ColorModels, { ColorModelsDefaultProps } from "../ColorModels";
+import ColorSpaces, { ColorSpacesDefaultProps } from "../ColorSpaces";
+import Hues from "../Hues";
+
 import { Grid } from "../layout";
 import { Section } from "../semantic-elements";
 import { Text } from "../typography";
@@ -34,6 +38,17 @@ const container = {
 const Designer = (props) => {
   const { containerKlass } = useStyles([container], props);
 
+  const [model, setModel] = useState(ColorModelsDefaultProps.models[0].name);
+  const [space, setSpace] = useState(ColorSpacesDefaultProps.spaces[0].name);
+
+  const handleModelChange = (event) => {
+    setModel(event.target.value);
+  };
+
+  const handleSpaceChange = (event) => {
+    setSpace(event.target.value);
+  };
+
   const asProps = {
     title: "The designer",
   };
@@ -44,7 +59,15 @@ const Designer = (props) => {
       as={Section}
       asProps={asProps}
     >
-      Designer
+      <ColorModels
+        selected={model}
+        handleModelChange={() => handleModelChange}
+      />
+      <ColorSpaces
+        selected={space}
+        handleSpaceChange={() => handleSpaceChange}
+      />
+      <Hues modelName={model} space={space} />
     </Grid>
   );
 };
