@@ -1,7 +1,7 @@
 import React, { createContext } from "react";
 
 import theme from "../src/theme";
-import Presenter from "../src/components/Presenter";
+import Home from "../src/components/Home";
 import { Setup } from "../src/components/typography";
 
 const ThemeContext = createContext();
@@ -10,7 +10,7 @@ const App = () => {
   return (
     <ThemeContext.Provider value={theme}>
       <Setup />
-      <Presenter />
+      <Home />
     </ThemeContext.Provider>
   );
 };

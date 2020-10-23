@@ -6,7 +6,7 @@ import { useStyles } from "../../hooks";
 /**
  * Imports other components and hooks.
  */
-import Study from "../Study";
+import Study from "../Study/Study.mdx";
 import Designer from "../Designer";
 import Presenter from "../Presenter";
 import { Grid } from "../layout";

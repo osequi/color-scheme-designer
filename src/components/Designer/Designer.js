@@ -44,7 +44,7 @@ const Designer = (props) => {
       as={Section}
       asProps={asProps}
     >
-      xxx
+      Designer
     </Grid>
   );
 };
