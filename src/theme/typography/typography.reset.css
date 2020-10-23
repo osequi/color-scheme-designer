@@ -58,7 +58,6 @@ input[type="color"],
 input[type="file"],
 select,
 option {
-  background: red;
   border: none;
   height: var(--lem);
 }
