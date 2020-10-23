@@ -1,0 +1,1 @@
+export { useColorPairs } from "./useColors";
