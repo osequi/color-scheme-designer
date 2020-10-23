@@ -9,6 +9,7 @@ import { FontsPropTypes, FontsDefaultProps } from "./fonts";
 import {
   lem,
   responsiveFontSizes,
+  responsiveFontSizesForCNA,
   responsiveGridColumns,
   font,
   maxWidth,
@@ -100,6 +101,7 @@ const typography = {
 const helpers = {
   lem: lem(),
   responsiveFontSizes: responsiveFontSizes(),
+  responsiveFontSizesForCNA: responsiveFontSizesForCNA(),
   responsiveGridColumns: (columns) => responsiveGridColumns(columns),
   font: (name) => font(name),
   maxWidth: (value) => maxWidth(value),

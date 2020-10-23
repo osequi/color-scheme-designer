@@ -20,9 +20,7 @@ const useMarkdown = (file) => {
       });
   }, [file]);
 
-  const html = (
-    <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(markdown) }} />
-  );
+  const html = <div dangerouslySetInnerHTML={{ __html: markdown }} />;
 
   return { markdown: markdown, html: html };
 };

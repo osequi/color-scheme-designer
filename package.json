@@ -10,6 +10,7 @@
   "dependencies": {
     "@mdx-js/loader": "^1.6.19",
     "@next/mdx": "^9.5.5",
+    "array.prototype.flatmap": "^1.2.3",
     "dompurify": "^2.2.0",
     "emotion": "^10.0.27",
     "lodash": "^4.17.20",

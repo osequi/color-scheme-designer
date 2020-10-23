@@ -41,6 +41,22 @@ const responsiveFontSizes = () => {
   return responsiveSizes;
 };
 
+const responsiveFontSizesForCNA = () => {
+  const { grid } = typography;
+  const { fontSizes } = grid;
+  const { breakpoints, helpers } = responsiveness;
+  const { breakpoint } = helpers;
+
+  return (
+    fontSizes &&
+    fontSizes.reduce((result, item, index) => {
+      const bp = breakpoints[index];
+      const query = breakpoint(bp.name);
+      return `${result} ${query} {body {font-size: ${item}%;}}`;
+    }, "")
+  );
+};
+
 /**
  * Creates media queries for responsive grid columns
  */
@@ -102,4 +118,11 @@ const maxWidth = (value) => {
   };
 };
 
-export { lem, responsiveFontSizes, responsiveGridColumns, font, maxWidth };
+export {
+  lem,
+  responsiveFontSizes,
+  responsiveFontSizesForCNA,
+  responsiveGridColumns,
+  font,
+  maxWidth,
+};

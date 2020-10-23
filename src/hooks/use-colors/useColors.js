@@ -45,7 +45,10 @@ const generateColorPairs = (colors) => {
     }
   }
 
-  return { legible: legible.flat(), notLegible: notLegible.flat() };
+  return {
+    legible: [].concat(...legible),
+    notLegible: [].concat(...notLegible), // .flat() is not supported in Next.js ....
+  };
 };
 
 /**

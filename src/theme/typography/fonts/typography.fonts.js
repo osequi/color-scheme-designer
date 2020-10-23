@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 /**
  * Imports fonts.
  */
-import "./fonts.css";
+//import "./fonts.css";
 
 /**
  * Defines the prop types.
