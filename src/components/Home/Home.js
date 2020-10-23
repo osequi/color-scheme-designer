@@ -50,9 +50,9 @@ const Home = (props) => {
       as={Section}
       asProps={asProps}
     >
+      <Designer />
       <Study />
       <Presenter />
-      <Designer />
     </Grid>
   );
 };
