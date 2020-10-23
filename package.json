@@ -8,8 +8,21 @@
     "start": "next start"
   },
   "dependencies": {
+    "@mdx-js/loader": "^1.6.19",
+    "@next/mdx": "^9.5.5",
+    "dompurify": "^2.2.0",
+    "emotion": "^10.0.27",
+    "lodash": "^4.17.20",
+    "marked": "^1.2.2",
+    "modularscale-js": "^3.0.1",
     "next": "9.5.3",
+    "normalize.css": "^8.0.1",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "shortid": "^2.2.15",
+    "wcag-contrast": "^3.0.0"
+  },
+  "devDependencies": {
+    "@osequi/new-component": "^1.0.0"
   }
 }
