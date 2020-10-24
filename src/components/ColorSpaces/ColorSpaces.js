@@ -30,22 +30,13 @@ const defaultProps = {
       name: "hsl",
     },
     {
-      name: "hsv",
-    },
-    {
       name: "lab",
     },
     {
       name: "lch",
     },
     {
-      name: "hcl",
-    },
-    {
-      name: "cmyk",
-    },
-    {
-      name: "gl",
+      name: "lrgb",
     },
   ],
   selected: "rgb",

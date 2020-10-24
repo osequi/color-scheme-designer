@@ -69,7 +69,7 @@ const Hues = (props) => {
     const j = i === length - 1 ? 0 : i + 1;
     const { name: name2 } = primaryColors[j];
     const color2 = chroma(name2);
-    const colorMix = chroma.mix(name1, name2);
+    const colorMix = chroma.mix(name1, name2, 0.5, space);
 
     huesList.push(
       <ColorSwatch
@@ -81,7 +81,10 @@ const Hues = (props) => {
   }
 
   return (
-    <Grid columns={huesList.length / 2} className={cx("Hues", containerKlass)}>
+    <Grid
+      columns={[1, 1, 1, huesList.length / 2]}
+      className={cx("Hues", containerKlass)}
+    >
       {huesList}
     </Grid>
   );
