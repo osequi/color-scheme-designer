@@ -55,7 +55,6 @@ const defaultText = (props, theme) => {
   return {
     ...theme.typography.helpers.scale(0),
     ...theme.typography.helpers.font("Nimbus Sans Light"),
-    margin: "var(--lem)",
   };
 };
 

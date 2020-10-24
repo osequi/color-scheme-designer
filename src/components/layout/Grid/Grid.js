@@ -56,6 +56,13 @@ const propTypes = {
    * @type {any}
    */
   children: PropTypes.any,
+  /**
+   * The className of the element.
+   * It's optional to set.
+   * Serves the technical purpose of style chaining.
+   * @type {string}
+   */
+  className: PropTypes.string,
 };
 
 /**
@@ -155,7 +162,7 @@ const gridWithTitle = (props) => ({
  * @see Grid.md
  */
 const Grid = (props) => {
-  const { columns, fauxLines, as, asProps, children } = props;
+  const { columns, fauxLines, as, asProps, children, className } = props;
   const theme = useTheme();
 
   /**
@@ -184,7 +191,7 @@ const Grid = (props) => {
    * Prepares the props to render the component.
    */
   const propsGridWithoutTitle = {
-    className: cx("Grid", containerKlass, fauxLinesStyleKlass),
+    className: cx("Grid", containerKlass, fauxLinesStyleKlass, className),
     ...asProps,
   };
 

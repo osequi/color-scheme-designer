@@ -39,7 +39,7 @@ const propTypes = {
    * The padding of the cells.
    * @type {number}
    */
-  padding: PropTypes.string,
+  padding: PropTypes.number,
   children: PropTypes.any,
   /**
    * The className of the element.

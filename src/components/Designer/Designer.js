@@ -10,7 +10,7 @@ import ColorModels, { ColorModelsDefaultProps } from "../ColorModels";
 import ColorSpaces, { ColorSpacesDefaultProps } from "../ColorSpaces";
 import Hues from "../Hues";
 
-import { Grid } from "../layout";
+import { Grid, Cell } from "../layout";
 import { Section } from "../semantic-elements";
 import { Text } from "../typography";
 
@@ -59,14 +59,16 @@ const Designer = (props) => {
       as={Section}
       asProps={asProps}
     >
-      <ColorModels
-        selected={model}
-        handleModelChange={() => handleModelChange}
-      />
-      <ColorSpaces
-        selected={space}
-        handleSpaceChange={() => handleSpaceChange}
-      />
+      <Cell>
+        <ColorModels
+          selected={model}
+          handleModelChange={() => handleModelChange}
+        />
+        <ColorSpaces
+          selected={space}
+          handleSpaceChange={() => handleSpaceChange}
+        />
+      </Cell>
       <Hues modelName={model} space={space} />
     </Grid>
   );

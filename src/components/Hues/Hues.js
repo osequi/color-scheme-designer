@@ -33,8 +33,6 @@ const defaultProps = {
  */
 const container = (props) => ({
   label: "Container",
-  width: "100vw",
-  height: "100vh",
 });
 
 /**
@@ -61,8 +59,10 @@ const Hues = (props) => {
     huesList.push(
       <ColorSwatch
         key={shortid.generate()}
-        color={color1.css()}
-        children={name1}
+        color={color1}
+        name={name1}
+        modelName={modelName}
+        space={space}
       />
     );
 
@@ -74,8 +74,10 @@ const Hues = (props) => {
     huesList.push(
       <ColorSwatch
         key={shortid.generate()}
-        color={colorMix.css()}
-        children={`${name1} + ${name2}`}
+        color={colorMix}
+        name={`${name1} + ${name2}`}
+        modelName={modelName}
+        space={space}
       />
     );
   }

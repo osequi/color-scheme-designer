@@ -7,6 +7,7 @@ import { useStyles } from "../../hooks";
  * Imports other components and hooks.
  */
 import { colorSpacePropTypes } from "../../data/colorSpace.props";
+import { Cell } from "../layout";
 
 /**
  * Defines the prop types.
@@ -72,7 +73,7 @@ const ColorSpaces = (props) => {
     });
 
   return (
-    <div className={cx("ColorSpaces", containerKlass)}>
+    <Cell padding={0} className={cx("ColorSpaces", containerKlass)}>
       <label>Space</label>
       <select
         name="ColorSpaces"
@@ -81,7 +82,7 @@ const ColorSpaces = (props) => {
       >
         {spacesList}
       </select>
-    </div>
+    </Cell>
   );
 };
 

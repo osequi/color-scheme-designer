@@ -13,6 +13,7 @@ import {
   colorModelPropTypes,
   colorModelDefaultProps,
 } from "../../data/colorModel.props";
+import { Cell } from "../layout";
 
 /**
  * Defines the prop types.
@@ -61,7 +62,7 @@ const ColorModels = (props) => {
     });
 
   return (
-    <div className={cx("ColorModels", containerKlass)}>
+    <Cell padding={0} className={cx("ColorModels", containerKlass)}>
       <label>Model</label>
       <select
         name="ColorModels"
@@ -70,7 +71,7 @@ const ColorModels = (props) => {
       >
         {modelsList}
       </select>
-    </div>
+    </Cell>
   );
 };
 
