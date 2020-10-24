@@ -50,13 +50,18 @@ const ColorTune = (props) => {
       <p>
         Couldn't found that color...
         <br />
-        Please use a named color from the W3CX11 specification or a hexadecimal
-        code.
-        <br />
-        See{" "}
+        Please use a named color from the{" "}
+        <a
+          href="https://www.w3.org/wiki/CSS/Properties/color/keywords"
+          title="W3CX11 specification"
+        >
+          W3CX11 specification
+        </a>{" "}
+        or a{" "}
         <a href="https://gka.github.io/chroma.js/#chroma" title="Chroma">
-          https://gka.github.io/chroma.js/#chroma
+          hexadecimal code
         </a>
+        .
       </p>
     );
   }
