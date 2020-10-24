@@ -36,6 +36,7 @@ const defaultProps = {
   displayTonesUp: true,
   displayTonesDown: true,
   displayShades: true,
+  padding: 0,
 };
 
 /**
