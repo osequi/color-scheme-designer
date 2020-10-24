@@ -7,7 +7,7 @@ import chroma from "chroma-js";
 /**
  * Imports other components and hooks.
  */
-import { Grid } from "../layout";
+import { Grid, Cell } from "../layout";
 
 /**
  * Defines the prop types.
@@ -40,10 +40,10 @@ const ColorInfo = (props) => {
   const { containerKlass } = useStyles([container], props);
 
   return (
-    <Grid columns={[1, 4]} className={cx("ColorInfo", containerKlass)}>
-      <p>{color.hex("rgba")}</p>
-      <p>{color.css("rgba")}</p>
-      <p>{color.css("hsl")}</p>
+    <Grid className={cx("ColorInfo", containerKlass)}>
+      <Cell>{color.hex("rgb")}</Cell>
+      <Cell>{color.css("rgba")}</Cell>
+      <Cell>{color.css("hsl")}</Cell>
     </Grid>
   );
 };

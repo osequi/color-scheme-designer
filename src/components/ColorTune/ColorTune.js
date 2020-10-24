@@ -14,6 +14,7 @@ import ColorInfo from "../ColorInfo";
  */
 const propTypes = {
   colorName: PropTypes.string,
+  textColorNames: PropTypes.arrayOf(PropTypes.string),
 };
 
 /**
@@ -21,6 +22,7 @@ const propTypes = {
  */
 const defaultProps = {
   colorName: null,
+  textColorNames: ["black", "white"],
 };
 
 /**
@@ -28,6 +30,7 @@ const defaultProps = {
  */
 const container = (props) => ({
   backgroundColor: props.color,
+  color: props.textColor,
 });
 
 /**
@@ -35,7 +38,7 @@ const container = (props) => ({
  * @see ColorTune.md
  */
 const ColorTune = (props) => {
-  const { colorName } = props;
+  const { colorName, textColorNames } = props;
   if (!colorName) return null;
 
   let color = chroma("white");
@@ -58,7 +61,16 @@ const ColorTune = (props) => {
     );
   }
 
-  const { containerKlass } = useStyles([container], { color: color.css() });
+  const textColorNames1 = chroma(textColorNames[0]);
+  const textColorNames2 = chroma(textColorNames[1]);
+  const contrast1 = chroma.contrast(color, textColorNames1);
+  const contrast2 = chroma.contrast(color, textColorNames2);
+  const textColor = contrast1 > 4.5 ? textColorNames1 : textColorNames2;
+
+  const { containerKlass } = useStyles([container], {
+    color: color.css(),
+    textColor: textColor.css(),
+  });
 
   return (
     <div className={cx("ColorTune", containerKlass)}>
