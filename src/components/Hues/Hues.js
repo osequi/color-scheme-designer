@@ -18,6 +18,12 @@ import { Grid } from "../layout";
 const propTypes = {
   modelName: PropTypes.string,
   space: PropTypes.string,
+  tints: PropTypes.number,
+  tones: PropTypes.number,
+  shades: PropTypes.number,
+  displayTints: PropTypes.bool,
+  displayTones: PropTypes.bool,
+  displayShades: PropTypes.bool,
 };
 
 /**
@@ -26,6 +32,12 @@ const propTypes = {
 const defaultProps = {
   modelName: null,
   space: null,
+  tints: 50,
+  tones: 10,
+  shades: 10,
+  displayTints: true,
+  displayTones: true,
+  displayShades: true,
 };
 
 /**
@@ -40,7 +52,7 @@ const container = (props) => ({
  * @see Hues.md
  */
 const Hues = (props) => {
-  const { modelName, space } = props;
+  const { modelName, space, tints, tones, shades } = props;
   const { containerKlass } = useStyles([container], props);
 
   const model = ColorModelsDefaultProps.models.find(
@@ -58,11 +70,15 @@ const Hues = (props) => {
 
     huesList.push(
       <ColorSwatch
+        {...props}
         key={shortid.generate()}
         color={color1}
         name={name1}
         modelName={modelName}
         space={space}
+        tints={tints}
+        tones={tones}
+        shades={shades}
       />
     );
 
@@ -73,11 +89,15 @@ const Hues = (props) => {
 
     huesList.push(
       <ColorSwatch
+        {...props}
         key={shortid.generate()}
         color={colorMix}
         name={`${name1} + ${name2}`}
         modelName={modelName}
         space={space}
+        tints={tints}
+        tones={tones}
+        shades={shades}
       />
     );
   }

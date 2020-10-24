@@ -8,7 +8,7 @@ import chroma from "chroma-js";
  * Imports other components and hooks.
  */
 import ColorInfo from "../ColorInfo";
-import ColorTint from "../ColorTint";
+import ColorTints from "../ColorTints";
 import { Cell } from "../layout";
 
 /**
@@ -17,6 +17,7 @@ import { Cell } from "../layout";
 const propTypes = {
   color: PropTypes.string,
   children: PropTypes.any,
+  padding: 1,
 };
 
 /**
@@ -42,11 +43,10 @@ const header = (props) => ({
  * @see ColorSwatch.md
  */
 const ColorSwatch = (props) => {
-  const { color, name } = props;
+  const { color, name, displayTints, padding } = props;
 
   const [showInfo, setShowInfo] = useState(false);
   const clickHandler = () => setShowInfo(!showInfo);
-  console.log("showInfo:", showInfo);
 
   const { containerKlass, headerKlass } = useStyles([container, header], {
     ...props,
@@ -54,12 +54,12 @@ const ColorSwatch = (props) => {
   });
 
   return (
-    <Cell className={cx("ColorSwatch", containerKlass)}>
+    <Cell padding={padding} className={cx("ColorSwatch", containerKlass)}>
       <h3 className={cx("Header", headerKlass)} onClick={() => clickHandler()}>
         {name}
       </h3>
       <ColorInfo {...props} display={showInfo} />
-      <ColorTint {...props} />
+      {displayTints && <ColorTints {...props} />}
     </Cell>
   );
 };
