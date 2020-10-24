@@ -26,16 +26,16 @@ const container = {
 
 /**
  * Displays the component.
- * @see Home.md
+ * @see Search.md
  */
-const Home = (props) => {
+const Search = (props) => {
   const { containerKlass } = useStyles([container], props);
 
-  return "Pls. select something from the menu.";
+  return <div className={cx("Search", containerKlass)}>Search</div>;
 };
 
-Home.propTypes = propTypes;
-Home.defaultProps = defaultProps;
+Search.propTypes = propTypes;
+Search.defaultProps = defaultProps;
 
-export default Home;
-export { propTypes as HomePropTypes, defaultProps as HomeDefaultProps };
+export default Search;
+export { propTypes as SearchPropTypes, defaultProps as SearchDefaultProps };

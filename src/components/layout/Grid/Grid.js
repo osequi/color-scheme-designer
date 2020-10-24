@@ -72,7 +72,7 @@ const defaultProps = {
   width: "100%",
   height: "100%",
   columns: 1,
-  gap: 1,
+  gap: 0,
   fauxLines: "none",
   as: "div",
   asProps: null,
@@ -153,8 +153,8 @@ const hasTitle = (asProps) => {
  * Defines the styles when the grid has a title set.
  */
 const gridWithTitle = (props) => ({
-  display: "flex",
-  flexDirection: "column",
+  display: "grid",
+  gridTemplateColumns: "1fr",
 });
 
 /**

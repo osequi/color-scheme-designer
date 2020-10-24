@@ -1,21 +1,9 @@
-import React, { createContext } from "react";
+import React from "react";
 
-import theme from "../src/theme";
 import Home from "../src/components/Home";
-import { Setup, Text } from "../src/components/typography";
 
-const ThemeContext = createContext();
-
-const App = () => {
-  return (
-    <ThemeContext.Provider value={theme}>
-      <Setup />
-      <Text>
-        <Home />
-      </Text>
-    </ThemeContext.Provider>
-  );
+const HomePage = () => {
+  return <Home />;
 };
 
-export default App;
-export { ThemeContext };
+export default HomePage;

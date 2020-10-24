@@ -58,7 +58,7 @@ const defaultProps = {
   name: null,
   as: "div",
   asProps: null,
-  padding: 1,
+  padding: 0,
   children: null,
   className: "Cell",
 };
