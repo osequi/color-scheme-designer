@@ -8,6 +8,7 @@ import chroma from "chroma-js";
  * Imports other components and hooks.
  */
 import ColorInfo from "../ColorInfo";
+import ColorTint from "../ColorTint";
 import { Cell } from "../layout";
 
 /**
@@ -58,6 +59,7 @@ const ColorSwatch = (props) => {
         {name}
       </h3>
       <ColorInfo {...props} display={showInfo} />
+      <ColorTint {...props} />
     </Cell>
   );
 };
