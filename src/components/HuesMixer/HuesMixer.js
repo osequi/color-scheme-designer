@@ -17,7 +17,7 @@ import ColorSwatch from "../ColorSwatch";
  */
 const propTypes = {
   mixes: PropTypes.number,
-  mixMode: PropTypes.oneOf(["tint", "tone", "shade"]),
+  mixMode: PropTypes.oneOf(["tint", "tonesUp", "tonesDown", "shade"]),
 };
 
 /**
@@ -51,18 +51,21 @@ const HuesMixer = (props) => {
         const mix =
           mixMode === "tint"
             ? chroma(color).brighten(0.1 * (index + 1))
-            : mixMode === "tone"
-            ? chroma(color).saturate(1 * (index + 1))
+            : mixMode === "tonesUp"
+            ? chroma(color).saturate(0.1 * (index + 1))
+            : mixMode === "tonesDown"
+            ? chroma(color).desaturate(0.1 * (index + 1))
             : chroma(color).darken(0.1 * (index + 1));
         return (
           <ColorSwatch
             {...props}
             key={shortid.generate()}
             color={mix}
-            //name={`${startCase(mixMode)} ${index}`}
-            name="&nbsp;"
+            name={`${startCase(mixMode)} ${index + 1}`}
+            displayName="&nbsp;"
             displayTints={false}
-            displayTones={false}
+            displayTonesUp={false}
+            displayTonesDown={false}
             displayShades={false}
             padding={0}
           />
@@ -70,7 +73,7 @@ const HuesMixer = (props) => {
       });
 
   return (
-    <Grid gap={0} className={cx("HuesMixer", containerKlass)}>
+    <Grid gap={0} className={cx("HuesMixer", `${mixMode}`, containerKlass)}>
       {mixesList}
     </Grid>
   );

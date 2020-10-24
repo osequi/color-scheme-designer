@@ -18,11 +18,10 @@ import { Grid } from "../layout";
 const propTypes = {
   modelName: PropTypes.string,
   space: PropTypes.string,
-  tints: PropTypes.number,
-  tones: PropTypes.number,
-  shades: PropTypes.number,
+  mixes: PropTypes.number,
   displayTints: PropTypes.bool,
-  displayTones: PropTypes.bool,
+  displayTonesUp: PropTypes.bool,
+  displayTonesDown: PropTypes.bool,
   displayShades: PropTypes.bool,
 };
 
@@ -32,11 +31,10 @@ const propTypes = {
 const defaultProps = {
   modelName: null,
   space: null,
-  tints: 50,
-  tones: 10,
-  shades: 10,
+  mixes: 30,
   displayTints: true,
-  displayTones: true,
+  displayTonesUp: true,
+  displayTonesDown: true,
   displayShades: true,
 };
 
@@ -52,7 +50,7 @@ const container = (props) => ({
  * @see Hues.md
  */
 const Hues = (props) => {
-  const { modelName, space, tints, tones, shades } = props;
+  const { modelName, space, mixes } = props;
   const { containerKlass } = useStyles([container], props);
 
   const model = ColorModelsDefaultProps.models.find(
@@ -76,9 +74,7 @@ const Hues = (props) => {
         name={name1}
         modelName={modelName}
         space={space}
-        tints={tints}
-        tones={tones}
-        shades={shades}
+        mixes={mixes}
       />
     );
 
@@ -95,15 +91,14 @@ const Hues = (props) => {
         name={`${name1} + ${name2}`}
         modelName={modelName}
         space={space}
-        tints={tints}
-        tones={tones}
-        shades={shades}
+        mixes={mixes}
       />
     );
   }
 
   return (
     <Grid
+      gap={0}
       columns={[1, 1, 1, huesList.length / 2]}
       className={cx("Hues", containerKlass)}
     >
