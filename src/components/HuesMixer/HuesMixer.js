@@ -4,6 +4,7 @@ import { cx } from "emotion";
 import { useStyles } from "../../hooks";
 import chroma from "chroma-js";
 import shortid from "shortid";
+import { startCase } from "lodash";
 
 /**
  * Imports other components and hooks.
@@ -15,14 +16,16 @@ import ColorSwatch from "../ColorSwatch";
  * Defines the prop types.
  */
 const propTypes = {
-  tints: PropTypes.number,
+  mixes: PropTypes.number,
+  mixMode: PropTypes.oneOf(["tint", "tone", "shade"]),
 };
 
 /**
  * Defines the default props.
  */
 const defaultProps = {
-  tints: 10,
+  mixes: 30,
+  mixMode: "tint",
 };
 
 /**
@@ -34,24 +37,30 @@ const container = {
 
 /**
  * Displays the component.
- * @see ColorTints.md
+ * @see HuesMixer.md
  */
-const ColorTints = (props) => {
-  const { color, tints } = props;
+const HuesMixer = (props) => {
+  const { color, mixes, mixMode } = props;
   const { containerKlass } = useStyles([container], props);
 
-  const tintsList =
-    tints &&
-    Array(tints)
+  const mixesList =
+    mixes &&
+    Array(mixes)
       .fill("")
       .map((item, index) => {
-        const tint = chroma(color).darken(0.1 * (index + 1));
+        const mix =
+          mixMode === "tint"
+            ? chroma(color).brighten(0.1 * (index + 1))
+            : mixMode === "tone"
+            ? chroma(color).saturate(1 * (index + 1))
+            : chroma(color).darken(0.1 * (index + 1));
         return (
           <ColorSwatch
             {...props}
             key={shortid.generate()}
-            color={tint}
-            name={`Tint ${index}`}
+            color={mix}
+            //name={`${startCase(mixMode)} ${index}`}
+            name="&nbsp;"
             displayTints={false}
             displayTones={false}
             displayShades={false}
@@ -61,17 +70,17 @@ const ColorTints = (props) => {
       });
 
   return (
-    <Grid gap={0} className={cx("ColorTints", containerKlass)}>
-      {tintsList}
+    <Grid gap={0} className={cx("HuesMixer", containerKlass)}>
+      {mixesList}
     </Grid>
   );
 };
 
-ColorTints.propTypes = propTypes;
-ColorTints.defaultProps = defaultProps;
+HuesMixer.propTypes = propTypes;
+HuesMixer.defaultProps = defaultProps;
 
-export default ColorTints;
+export default HuesMixer;
 export {
-  propTypes as ColorTintsPropTypes,
-  defaultProps as ColorTintsDefaultProps,
+  propTypes as HuesMixerPropTypes,
+  defaultProps as HuesMixerDefaultProps,
 };

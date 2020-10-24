@@ -8,8 +8,8 @@ import chroma from "chroma-js";
  * Imports other components and hooks.
  */
 import ColorInfo from "../ColorInfo";
-import ColorTints from "../ColorTints";
-import { Cell } from "../layout";
+import HuesMixer from "../HuesMixer";
+import { Cell, Grid } from "../layout";
 
 /**
  * Defines the prop types.
@@ -43,7 +43,14 @@ const header = (props) => ({
  * @see ColorSwatch.md
  */
 const ColorSwatch = (props) => {
-  const { color, name, displayTints, padding } = props;
+  const {
+    color,
+    name,
+    displayTints,
+    displayTones,
+    displayShades,
+    padding,
+  } = props;
 
   const [showInfo, setShowInfo] = useState(false);
   const clickHandler = () => setShowInfo(!showInfo);
@@ -59,7 +66,11 @@ const ColorSwatch = (props) => {
         {name}
       </h3>
       <ColorInfo {...props} display={showInfo} />
-      {displayTints && <ColorTints {...props} />}
+      <Grid columns={3} gap={0}>
+        {displayTints && <HuesMixer mixMode="tint" {...props} />}
+        {displayTones && <HuesMixer mixMode="tone" {...props} />}
+        {displayShades && <HuesMixer mixMode="shade" {...props} />}
+      </Grid>
     </Cell>
   );
 };
