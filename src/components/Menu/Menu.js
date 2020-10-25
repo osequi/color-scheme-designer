@@ -41,10 +41,7 @@ const Menu = (props) => {
   return (
     <Grid className={cx("Menu", containerKlass)} as={Nav} asProps={asProps}>
       <Cell>
-        <Link href="/search">Search</Link>
-      </Cell>
-      <Cell>
-        <Link href="/add">Add</Link>
+        <Link href="/add">Add color</Link>
       </Cell>
       <Cell>
         <Link href="/">Home</Link>

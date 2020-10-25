@@ -42,8 +42,6 @@ const ColorInfo = (props) => {
   const name = color.name();
   const name2 = name.includes("#") ? null : name;
 
-  console.log(color.lab().map((item) => item.toFixed(2)));
-
   return (
     <Grid className={cx("ColorInfo", containerKlass)}>
       <Cell>{name2 && name2}</Cell>

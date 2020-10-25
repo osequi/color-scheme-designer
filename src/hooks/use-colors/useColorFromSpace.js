@@ -1,4 +1,5 @@
 import chroma from "chroma-js";
+import { lowerCase } from "lodash";
 
 const colorSpaces = [
   {
@@ -100,11 +101,14 @@ const createColorFromTriplets = (input, space, err) => {
   /**
    * (255, 255, 1, 'RGB') => {r:255, g:255, b: 1}
    */
-  const params = spaceName.map((item, index) => {
-    return { item: parts[index] };
+  let params = [];
+  parts.map((item, index) => {
+    params[lowerCase(spaceName[index])] = item;
   });
 
-  return chroma(params);
+  console.log("params:", params);
+
+  return chroma({ ...params });
 };
 
 /**

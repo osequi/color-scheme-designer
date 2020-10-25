@@ -4,8 +4,6 @@ export { default as useFindInArrays, findInArrays } from "./use-find-in-arrays";
 export {
   useColorPairs,
   generateColorPairs,
-  useColorByName,
-  createColorByName,
   useColorFromSpace,
   createColorFromSpace,
   colorSpaces,

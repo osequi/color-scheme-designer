@@ -45,8 +45,6 @@ const container = (props) => ({
 const ColorTune = (props) => {
   const { color, textColorNames, input, space } = props;
 
-  console.log("color:", color);
-
   if (!color) return null;
 
   const textColorNames1 = chroma(textColorNames[0]);
