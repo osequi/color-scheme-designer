@@ -1,39 +1,21 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { cx } from "emotion";
-import { useStyles, createColorFromSpace } from "../../hooks";
+import { useStyles, createColorFromSpace, colorSpaces } from "../../hooks";
 
 /**
  * Imports other components and hooks.
  */
 import ColorTune from "../ColorTune";
 
-/**
- * Defines the available spaces.
- * @type {Array}
- */
-const spaces = [
-  "name",
-  "hexadecimal",
-  "number",
-  "rgb",
-  "hsl",
-  "hsv",
-  "lab",
-  "lch",
-  "hcl",
-  "cmyk",
-  "gl",
-  "temperature",
-  "random",
-];
+const colorSpaceNames = colorSpaces && colorSpaces.map((item) => item.name);
 
 /**
  * Defines the prop types.
  */
 const propTypes = {
   input: PropTypes.string,
-  space: PropTypes.oneOf(spaces),
+  space: PropTypes.oneOf(colorSpaceNames),
 };
 
 /**
@@ -41,7 +23,7 @@ const propTypes = {
  */
 const defaultProps = {
   input: null,
-  space: spaces[0],
+  space: colorSpaceNames[0],
 };
 
 /**
@@ -82,14 +64,18 @@ const Add = (props) => {
   };
 
   const spacesList =
-    spaces &&
-    spaces.map((item, index) => {
+    colorSpaceNames &&
+    colorSpaceNames.map((item, index) => {
       return (
         <option key={index} value={item}>
           {item}
         </option>
       );
     });
+
+  const colorSpace = colorSpaces.find((item) => item.name === spaceValue);
+  const { description, example } = colorSpace;
+  const hint = `${description} Example: ${example}`;
 
   return (
     <div className={cx("Add", containerKlass)}>
@@ -99,6 +85,7 @@ const Add = (props) => {
         {spacesList}
       </select>
       <button onClick={handleClick}>Add</button>
+      <p>{hint}</p>
       <p>{errorMessage}</p>
       <ColorTune color={color} />
     </div>

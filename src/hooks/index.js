@@ -8,4 +8,5 @@ export {
   createColorByName,
   useColorFromSpace,
   createColorFromSpace,
+  colorSpaces,
 } from "./use-colors";
