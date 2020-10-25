@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { cx } from "emotion";
-import { useStyles } from "../../hooks";
+import { useStyles, useColorByName } from "../../hooks";
 import chroma from "chroma-js";
 
 /**
@@ -14,6 +14,8 @@ import ColorInfo from "../ColorInfo";
  */
 const propTypes = {
   colorName: PropTypes.string,
+  input: PropTypes.string,
+  space: PropTypes.string,
   textColorNames: PropTypes.arrayOf(PropTypes.string),
 };
 
@@ -22,6 +24,8 @@ const propTypes = {
  */
 const defaultProps = {
   colorName: null,
+  input: null,
+  space: null,
   textColorNames: ["black", "white"],
 };
 
@@ -39,29 +43,10 @@ const container = (props) => ({
  * @see ColorTune.md
  */
 const ColorTune = (props) => {
-  const { colorName, textColorNames } = props;
+  const { colorName, textColorNames, input, space } = props;
 
-  if (!colorName) return null;
-  if (!chroma.valid(colorName))
-    return (
-      <p>
-        Couldn't find that color...
-        <br />
-        Please use a named color from the{" "}
-        <a
-          href="https://www.w3.org/wiki/CSS/Properties/color/keywords"
-          title="W3CX11 specification"
-        >
-          W3CX11 specification
-        </a>{" "}
-        or a{" "}
-        <a href="https://gka.github.io/chroma.js/#chroma" title="Chroma">
-          hexadecimal code.
-        </a>
-      </p>
-    );
-
-  const color = chroma(colorName);
+  const color = useColorByName(colorName);
+  if (!color) return null;
 
   const textColorNames1 = chroma(textColorNames[0]);
   const textColorNames2 = chroma(textColorNames[1]);

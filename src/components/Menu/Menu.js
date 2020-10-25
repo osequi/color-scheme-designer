@@ -44,6 +44,9 @@ const Menu = (props) => {
         <Link href="/search">Search</Link>
       </Cell>
       <Cell>
+        <Link href="/add">Add</Link>
+      </Cell>
+      <Cell>
         <Link href="/">Home</Link>
       </Cell>
     </Grid>

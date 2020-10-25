@@ -58,4 +58,4 @@ const useColorPairs = (colors) => {
   return generateColorPairs(colors);
 };
 
-export { useColorPairs };
+export { useColorPairs, generateColorPairs };
