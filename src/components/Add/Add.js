@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { cx } from "emotion";
-import { useStyles } from "../../hooks";
+import { useStyles, createColorFromInput } from "../../hooks";
 
 /**
  * Imports other components and hooks.
@@ -61,7 +61,8 @@ const Add = (props) => {
 
   const [inputValue, setInputValue] = useState(input);
   const [spaceValue, setSpaceValue] = useState(space);
-  const [inputDone, setInputDone] = useState({ input: input, space: space });
+  const [color, setColor] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
@@ -72,7 +73,12 @@ const Add = (props) => {
   };
 
   const handleClick = () => {
-    setInputDone({ input: inputValue, space: spaceValue });
+    const c = createColorFromInput(inputValue, spaceValue);
+    if (typeof c === "object") {
+      setColor(c);
+    } else {
+      setErrorMessage(c);
+    }
   };
 
   const spacesList =
@@ -93,7 +99,8 @@ const Add = (props) => {
         {spacesList}
       </select>
       <button onClick={handleClick}>Add</button>
-      <ColorTune {...inputDone} />
+      <p>{errorMessage}</p>
+      <ColorTune color={color} />
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { cx } from "emotion";
-import { useStyles } from "../../hooks";
+import { useStyles, createColorByName } from "../../hooks";
 
 /**
  * Imports other components and hooks.
@@ -38,14 +38,20 @@ const Search = (props) => {
   const { containerKlass } = useStyles([container], props);
 
   const [searchValue, setSearchValue] = useState(search);
-  const [colorName, setColorName] = useState();
+  const [color, setColor] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const handleChange = (event) => {
     setSearchValue(event.target.value);
   };
 
   const handleClick = () => {
-    setColorName(searchValue);
+    const c = createColorByName(searchValue);
+    if (typeof c === "object") {
+      setColor(c);
+    } else {
+      setErrorMessage(c);
+    }
   };
 
   return (
@@ -53,7 +59,8 @@ const Search = (props) => {
       <label>Search for a color:</label>
       <input type="text" value={searchValue} onChange={handleChange} />
       <button onClick={handleClick}>Search</button>
-      <ColorTune colorName={colorName} />
+      <p>{errorMessage}</p>
+      <ColorTune color={color} />
     </div>
   );
 };

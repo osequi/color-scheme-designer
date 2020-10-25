@@ -6,4 +6,6 @@ export {
   generateColorPairs,
   useColorByName,
   createColorByName,
+  useColorFromInput,
+  createColorFromInput,
 } from "./use-colors";

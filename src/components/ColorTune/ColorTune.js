@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { cx } from "emotion";
-import { useStyles, useColorByName } from "../../hooks";
+import { useStyles } from "../../hooks";
 import chroma from "chroma-js";
 
 /**
@@ -13,7 +13,7 @@ import ColorInfo from "../ColorInfo";
  * Defines the prop types.
  */
 const propTypes = {
-  colorName: PropTypes.string,
+  color: PropTypes.object,
   input: PropTypes.string,
   space: PropTypes.string,
   textColorNames: PropTypes.arrayOf(PropTypes.string),
@@ -23,7 +23,7 @@ const propTypes = {
  * Defines the default props.
  */
 const defaultProps = {
-  colorName: null,
+  color: null,
   input: null,
   space: null,
   textColorNames: ["black", "white"],
@@ -43,9 +43,10 @@ const container = (props) => ({
  * @see ColorTune.md
  */
 const ColorTune = (props) => {
-  const { colorName, textColorNames, input, space } = props;
+  const { color, textColorNames, input, space } = props;
 
-  const color = useColorByName(colorName);
+  console.log("color:", color);
+
   if (!color) return null;
 
   const textColorNames1 = chroma(textColorNames[0]);
