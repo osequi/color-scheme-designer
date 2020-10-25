@@ -8,6 +8,10 @@ import { useStyles, createColorFromSpace, colorSpaces } from "../../hooks";
  */
 import ColorTune from "../ColorTune";
 
+/**
+ * Loads color space names from the color hook.
+ * @type {array}
+ */
 const colorSpaceNames = colorSpaces && colorSpaces.map((item) => item.name);
 
 /**

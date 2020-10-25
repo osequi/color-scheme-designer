@@ -69,7 +69,8 @@ const colorSpaces = [
   },
   {
     name: "Temperature",
-    description: "A single number in Kelvin (K) units. From 0 to 30,000",
+    description:
+      "A single number in Kelvin (K) units. From around 200 to 30,000",
     example: "1000",
     spaceName: null,
   },
@@ -120,12 +121,13 @@ const createColorFromSpace = (input, space) => {
     "Invalid input. Please check https://gka.github.io/chroma.js/#chroma for the right syntax.";
 
   switch (space) {
-    case "Temperature":
-      return chroma.temperature(input);
     case "Color name":
     case "Hexadecimal string":
-    case "Number":
       return chroma.valid(input) ? chroma(input) : err;
+    case "Number":
+      return chroma(parseInt(input));
+    case "Temperature":
+      return chroma.temperature(input);
     default:
       return createColorFromTriplets(input, space, err);
   }
