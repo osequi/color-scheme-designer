@@ -51,8 +51,12 @@ const ColorInfo = (props) => {
       <Cell>RGB: {color.hex("rgb")}</Cell>
       <Cell>RGBa: {color.css("rgba")}</Cell>
       <Cell>HSL: {color.css("hsl")}</Cell>
-      <Cell>HSV: {JSON.stringify(color.hsv())}</Cell>
-      <Cell>HSI: {JSON.stringify(color.hsi())}</Cell>
+      <Cell>
+        HSV: {JSON.stringify(color.hsv().map((item) => item.toFixed(2)))}
+      </Cell>
+      <Cell>
+        HSI: {JSON.stringify(color.hsi().map((item) => item.toFixed(2)))}
+      </Cell>
       <Cell>
         Lab: {JSON.stringify(color.lab().map((item) => item.toFixed(2)))}
       </Cell>
