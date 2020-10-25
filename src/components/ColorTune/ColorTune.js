@@ -31,6 +31,7 @@ const defaultProps = {
 const container = (props) => ({
   backgroundColor: props.color,
   color: props.textColor,
+  border: "1px solid",
 });
 
 /**
@@ -39,16 +40,12 @@ const container = (props) => ({
  */
 const ColorTune = (props) => {
   const { colorName, textColorNames } = props;
+
   if (!colorName) return null;
-
-  let color = chroma("white");
-
-  try {
-    color = chroma(colorName);
-  } catch {
+  if (!chroma.valid(colorName))
     return (
       <p>
-        Couldn't found that color...
+        Couldn't find that color...
         <br />
         Please use a named color from the{" "}
         <a
@@ -59,12 +56,12 @@ const ColorTune = (props) => {
         </a>{" "}
         or a{" "}
         <a href="https://gka.github.io/chroma.js/#chroma" title="Chroma">
-          hexadecimal code
+          hexadecimal code.
         </a>
-        .
       </p>
     );
-  }
+
+  const color = chroma(colorName);
 
   const textColorNames1 = chroma(textColorNames[0]);
   const textColorNames2 = chroma(textColorNames[1]);

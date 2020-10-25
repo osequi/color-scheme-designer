@@ -39,11 +39,29 @@ const ColorInfo = (props) => {
   const { color, modelName, space } = props;
   const { containerKlass } = useStyles([container], props);
 
+  const name = color.name();
+  const name2 = name.includes("#") ? null : name;
+
+  console.log(color.lab().map((item) => item.toFixed(2)));
+
   return (
     <Grid className={cx("ColorInfo", containerKlass)}>
-      <Cell>{color.hex("rgb")}</Cell>
-      <Cell>{color.css("rgba")}</Cell>
-      <Cell>{color.css("hsl")}</Cell>
+      <Cell>{name2 && name2}</Cell>
+      <Cell>Nr: {color.num()}</Cell>
+      <Cell>RGB: {color.hex("rgb")}</Cell>
+      <Cell>RGBa: {color.css("rgba")}</Cell>
+      <Cell>HSL: {color.css("hsl")}</Cell>
+      <Cell>HSV: {JSON.stringify(color.hsv())}</Cell>
+      <Cell>HSI: {JSON.stringify(color.hsi())}</Cell>
+      <Cell>
+        Lab: {JSON.stringify(color.lab().map((item) => item.toFixed(2)))}
+      </Cell>
+      <Cell>
+        LCH: {JSON.stringify(color.lch().map((item) => item.toFixed(2)))}
+      </Cell>
+      <Cell>
+        HCL: {JSON.stringify(color.hcl().map((item) => item.toFixed(2)))}
+      </Cell>
     </Grid>
   );
 };
