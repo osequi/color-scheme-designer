@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { cx } from "emotion";
-import { useStyles, createColorFromInput } from "../../hooks";
+import { useStyles, createColorFromSpace } from "../../hooks";
 
 /**
  * Imports other components and hooks.
@@ -73,7 +73,7 @@ const Add = (props) => {
   };
 
   const handleClick = () => {
-    const c = createColorFromInput(inputValue, spaceValue);
+    const c = createColorFromSpace(inputValue, spaceValue);
     if (typeof c === "object") {
       setColor(c);
     } else {

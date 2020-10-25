@@ -7,7 +7,7 @@ import chroma from "chroma-js";
  * @return {object}       A chroma.js compatible color, or an error message.
  * @example input: 255, 255, 255 space: rgb => chroma('white')
  */
-const createColorFromInput = (input, space) => {
+const createColorFromSpace = (input, space) => {
   if (!input || !space) return null;
 
   const err =
@@ -23,8 +23,8 @@ const createColorFromInput = (input, space) => {
   return c;
 };
 
-const useColorFromInput = (input, space) => {
-  return createColorFromInput(input, space);
+const useColorFromSpace = (input, space) => {
+  return createColorFromSpace(input, space);
 };
 
-export { useColorFromInput, createColorFromInput };
+export { useColorFromSpace, createColorFromSpace };

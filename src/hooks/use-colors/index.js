@@ -1,3 +1,3 @@
 export { useColorPairs, generateColorPairs } from "./useColorPairs";
 export { useColorByName, createColorByName } from "./useColorByName";
-export { useColorFromInput, createColorFromInput } from "./useColorFromInput";
+export { useColorFromSpace, createColorFromSpace } from "./useColorFromSpace";
