@@ -7,4 +7,6 @@ export {
   useColorFromSpace,
   createColorFromSpace,
   colorSpaces,
+  useTextColor,
+  recommendTextColor,
 } from "./use-colors";

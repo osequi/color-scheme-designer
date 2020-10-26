@@ -4,3 +4,4 @@ export {
   createColorFromSpace,
   colorSpaces,
 } from "./useColorFromSpace";
+export { useTextColor, recommendTextColor } from "./useTextColor";

@@ -106,8 +106,6 @@ const createColorFromTriplets = (input, space, err) => {
     params[lowerCase(spaceName[index])] = item;
   });
 
-  console.log("params:", params);
-
   return chroma({ ...params });
 };
 
