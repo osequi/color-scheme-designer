@@ -54,15 +54,14 @@ const ColorInfo = (props) => {
 
   const s = Number(color.get("hsl.s").toFixed(2) * 100);
   const l = color.get("hsl.l").toFixed(2) * 100;
-  const black = 50 - l;
-  const white = l - 50;
-  const pureColor = l === 50;
-  const blackOrWhiteText = pureColor
-    ? "black/white"
-    : black > 0
-    ? "black"
-    : "white";
-  const blackOrWhiteAmount = black > 0 ? black : white;
+  const pureColor = l === 100 || l === 0 || l === 50;
+
+  const black = l < 50 ? (50 - l) * 2 : null;
+  const white = l > 50 ? (l - 50) * 2 : null;
+
+  const pureText = black ? "black" : white ? "white" : null;
+
+  const pureValue = black ? black : white;
 
   return (
     <Grid
@@ -110,7 +109,7 @@ const ColorInfo = (props) => {
         <Cell>{pureColor && "This is a pure color."}</Cell>
         <Cell>Amount of gray in the color: {s}%</Cell>
         <Cell>
-          Amount of {blackOrWhiteText} in the color: {blackOrWhiteAmount}%
+          {pureText && `Amount of ${pureText} in the color: ${pureValue}%`}
         </Cell>
       </Grid>
       <Grid className={cx("Suggestions")} as={Aside} asProps={asProps3}>
@@ -118,6 +117,7 @@ const ColorInfo = (props) => {
           Text color (white or black): {textColor.name()}, contrast: {contrast}
           {aa ? ", AA" : ""} {aaa ? ", AAA" : ""}
         </Cell>
+        <Cell>{!aaa && "Text color, AAA:"}</Cell>
       </Grid>
     </Grid>
   );
