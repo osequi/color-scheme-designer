@@ -60,11 +60,14 @@ const Add = (props) => {
 
   const handleClick = () => {
     const c = createColorFromSpace(inputValue, spaceValue);
+    let err = c;
+
     if (typeof c === "object") {
       setColor(c);
-    } else {
-      setErrorMessage(c);
+      err = null;
     }
+
+    setErrorMessage(err);
   };
 
   const spacesList =

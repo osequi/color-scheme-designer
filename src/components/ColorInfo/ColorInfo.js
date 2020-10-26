@@ -60,7 +60,6 @@ const ColorInfo = (props) => {
   const white = l > 50 ? (l - 50) * 2 : null;
 
   const pureText = black ? "black" : white ? "white" : null;
-
   const pureValue = black ? black : white;
 
   return (
