@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { cx } from "emotion";
 import {
   useStyles,
-  useTextColor,
+  useMaximumContrast,
   useColorValue,
   useColorContrast,
 } from "../../hooks";
@@ -59,7 +59,7 @@ const ColorInfo = (props) => {
    * Temperature.
    * - Just informative ...
    * - When trying to choose an opossite color with AAA it's not working ...
-   * - I mean warm on cool doen't mean it's necessarily AAA.
+   * - I mean warm on cool doesn't mean it's necessarily AAA.
    */
   const temp = color.temperature();
   const warm = temp < 5000 ? "warm (yellowish)" : "cool (bluish)";
@@ -68,7 +68,7 @@ const ColorInfo = (props) => {
    * HSL
    * - So far so good
    */
-  const { recommended: textColor, contrast, aaa, aa } = useTextColor(color);
+  const [textColor, contrast, aa, aaa] = useMaximumContrast(color);
 
   const s = useColorValue(color.get("hsl.s") * 100, 2);
   const l = useColorValue(color.get("hsl.l") * 100, 2);
@@ -82,23 +82,9 @@ const ColorInfo = (props) => {
   const pureValue = black ? black : white;
 
   /**
-   * Get an AAA match for a color
-   * - So far the first issue ...
-   */
-  const oppositeColor = chroma.random();
-  const [
-    oppositeColorContrast,
-    oppositeColorAa,
-    oppositeColorAaa,
-  ] = useColorContrast(color, oppositeColor);
-
-  /**
    * Loads the styles.
    */
-  const { containerKlass, oppositeKlass } = useStyles([container, opposite], {
-    ...props,
-    oppositeColor: oppositeColor.css(),
-  });
+  const { containerKlass } = useStyles([container], props);
 
   return (
     <Grid
@@ -152,11 +138,11 @@ const ColorInfo = (props) => {
       <Grid className={cx("Suggestions")} as={Aside} asProps={asProps3}>
         <Cell>
           Text color (white or black): {textColor.name()}, contrast: {contrast}
-          {aa ? ", AA" : ""} {aaa ? ", AAA" : ""}
+          {aaa ? ", AAA" : ""} {!aaa && aa ? ", AA" : ""}
         </Cell>
-        <Cell className={cx("Opposite", oppositeKlass)}>
+        <Cell>
           {!aaa &&
-            `Text color, AAA: ${oppositeColor.hex()}, contrast: ${oppositeColorContrast}`}
+            "Please fine tune the color. A higher contrast on this color cannot be achieved."}
         </Cell>
       </Grid>
     </Grid>

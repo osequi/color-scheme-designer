@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { cx } from "emotion";
-import { useStyles, useTextColor } from "../../hooks";
+import { useStyles, useMaximumContrast } from "../../hooks";
 import chroma from "chroma-js";
 
 /**
@@ -45,7 +45,7 @@ const ColorTune = (props) => {
 
   if (!color) return null;
 
-  const { recommended: textColor } = useTextColor(color);
+  const [textColor] = useMaximumContrast(color);
 
   const { containerKlass } = useStyles([container], {
     color: color.css(),

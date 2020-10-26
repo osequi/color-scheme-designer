@@ -1,4 +1,5 @@
 import chroma from "chroma-js";
+import { useColorValue } from ".";
 
 /**
  * Calculates the contrast of two colors.
@@ -7,11 +8,11 @@ import chroma from "chroma-js";
  * @return {array}         [The contrast ratio, AA compliant?, AAA compliant?]
  */
 const calculateContrast = (color1, color2) => {
-  const contrast = chroma.contrast(color1, color2);
+  const contrast = useColorValue(chroma.contrast(color1, color2), 2);
   const aa = contrast > 4.1;
   const aaa = contrast > 7;
 
-  return [contrast, aaa, aa];
+  return [contrast, aa, aaa];
 };
 
 const useColorContrast = (color1, color2) => {

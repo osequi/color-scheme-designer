@@ -6,7 +6,10 @@ export {
   colorSpaces,
 } from "./useColorFromSpace";
 
-export { useTextColor, recommendTextColor } from "./useTextColor";
+export {
+  useMaximumContrast,
+  maximumContrastPossible,
+} from "./useMaximumContrast";
 
 export { colorValueToDecimal, useColorValue } from "./useColorValue";
 
