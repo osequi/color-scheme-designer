@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { cx } from "emotion";
-import { useStyles } from "../../hooks";
+import { useStyles, useTextColor } from "../../hooks";
 import chroma from "chroma-js";
 
 /**
@@ -45,13 +45,28 @@ const ColorInfo = (props) => {
 
   const asProps1 = { title: "Info", display: true };
   const asProps2 = { title: "Properties", display: true };
+  const asProps3 = { title: "Suggestions", display: true };
 
   const temp = color.temperature();
   const warm = temp < 5000 ? "warm (yellowish)" : "cool (bluish)";
 
+  const textColor = useTextColor(color);
+
+  const s = Number(color.get("hsl.s").toFixed(2) * 100);
+  const l = color.get("hsl.l").toFixed(2) * 100;
+  const black = 50 - l;
+  const white = l - 50;
+  const pureColor = l === 50;
+  const blackOrWhiteText = pureColor
+    ? "black/white"
+    : black > 0
+    ? "black"
+    : "white";
+  const blackOrWhiteAmount = black > 0 ? black : white;
+
   return (
     <Grid
-      columns={[1, 2]}
+      columns={[1, 3]}
       gap={1}
       className={cx("ColorInfo", containerKlass)}
       as={Article}
@@ -59,7 +74,8 @@ const ColorInfo = (props) => {
       <Grid className={cx("Info")} as={Aside} asProps={asProps1}>
         <Cell>{name2 && name2}</Cell>
         <Cell>Nr: {chroma(color.hex()).num()}</Cell>
-        <Cell>RGB: {color.hex("rgb")}</Cell>
+        <Cell>Hex: {color.hex()}</Cell>
+        <Cell>RGB: {color.css("rgb")}</Cell>
         <Cell>RGBa: {color.css("rgba")}</Cell>
         <Cell>HSL: {color.css("hsl")}</Cell>
         <Cell>
@@ -91,6 +107,14 @@ const ColorInfo = (props) => {
         <Cell>
           Temperature: {temp}, {warm}
         </Cell>
+        <Cell>{pureColor && "This is a pure color."}</Cell>
+        <Cell>Amount of gray in the color: {s}%</Cell>
+        <Cell>
+          Amount of {blackOrWhiteText} in the color: {blackOrWhiteAmount}%
+        </Cell>
+      </Grid>
+      <Grid className={cx("Suggestions")} as={Aside} asProps={asProps3}>
+        <Cell>Text color: {textColor.name()}</Cell>
       </Grid>
     </Grid>
   );

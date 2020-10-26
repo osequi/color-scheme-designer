@@ -89,6 +89,7 @@ const container = (props, theme) => ({
   ...theme.typography.helpers.responsiveGridColumns(props.columns),
   columnGap: props.borderLeftSelector ? 0 : `calc(${props.gap} * var(--lem))`,
   rowGap: props.borderLeftSelector ? 0 : `calc(${props.gap} * var(--lem))`,
+  alignItems: "start",
 
   ["& > *"]: {
     padding: props.borderLeftSelector
