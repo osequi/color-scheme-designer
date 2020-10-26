@@ -53,7 +53,10 @@ const ColorInfo = (props) => {
   const { recommended: textColor, contrast, aaa, aa } = useTextColor(color);
 
   const s = Number(color.get("hsl.s").toFixed(2) * 100);
-  const l = color.get("hsl.l").toFixed(2) * 100;
+  const l = color.get("hsl.l").toFixed(4) * 100;
+
+  console.log("1:", color.get("hsl.s") * 100);
+
   const pureColor = l === 100 || l === 0 || l === 50;
 
   const black = l < 50 ? (50 - l) * 2 : null;

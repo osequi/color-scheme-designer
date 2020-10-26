@@ -9,4 +9,6 @@ export {
   colorSpaces,
   useTextColor,
   recommendTextColor,
+  colorValueToDecimal,
+  useColorValue,
 } from "./use-colors";
