@@ -64,7 +64,10 @@ const ColorInfo = (props) => {
   const temp = color.temperature();
   const warm = temp < 5000 ? "warm (yellowish)" : "cool (bluish)";
 
-  // HSL
+  /**
+   * HSL
+   * - So far so good
+   */
   const { recommended: textColor, contrast, aaa, aa } = useTextColor(color);
 
   const s = useColorValue(color.get("hsl.s") * 100, 2);
@@ -78,6 +81,10 @@ const ColorInfo = (props) => {
   const pureText = black ? "black" : white ? "white" : null;
   const pureValue = black ? black : white;
 
+  /**
+   * Get an AAA match for a color
+   * - So far the first issue ...
+   */
   const oppositeColor = chroma.random();
   const [
     oppositeColorContrast,
