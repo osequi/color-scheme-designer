@@ -26,7 +26,7 @@ const propTypes = {
  * Defines the default props.
  */
 const defaultProps = {
-  input: null,
+  input: "red",
   space: colorSpaceNames[0],
 };
 

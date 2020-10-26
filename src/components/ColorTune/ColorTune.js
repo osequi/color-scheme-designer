@@ -45,7 +45,7 @@ const ColorTune = (props) => {
 
   if (!color) return null;
 
-  const textColor = useTextColor(color);
+  const { recommended: textColor } = useTextColor(color);
 
   const { containerKlass } = useStyles([container], {
     color: color.css(),

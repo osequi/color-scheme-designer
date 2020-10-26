@@ -50,7 +50,7 @@ const ColorInfo = (props) => {
   const temp = color.temperature();
   const warm = temp < 5000 ? "warm (yellowish)" : "cool (bluish)";
 
-  const textColor = useTextColor(color);
+  const { recommended: textColor, contrast, aaa, aa } = useTextColor(color);
 
   const s = Number(color.get("hsl.s").toFixed(2) * 100);
   const l = color.get("hsl.l").toFixed(2) * 100;
@@ -114,7 +114,10 @@ const ColorInfo = (props) => {
         </Cell>
       </Grid>
       <Grid className={cx("Suggestions")} as={Aside} asProps={asProps3}>
-        <Cell>Text color: {textColor.name()}</Cell>
+        <Cell>
+          Text color (white or black): {textColor.name()}, contrast: {contrast}
+          {aa ? ", AA" : ""} {aaa ? ", AAA" : ""}
+        </Cell>
       </Grid>
     </Grid>
   );
