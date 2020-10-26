@@ -11,4 +11,6 @@ export {
   recommendTextColor,
   colorValueToDecimal,
   useColorValue,
+  calculateContrast,
+  useColorContrast,
 } from "./use-colors";

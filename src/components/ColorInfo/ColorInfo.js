@@ -1,7 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { cx } from "emotion";
-import { useStyles, useTextColor, useColorValue } from "../../hooks";
+import {
+  useStyles,
+  useTextColor,
+  useColorValue,
+  useColorContrast,
+} from "../../hooks";
 import chroma from "chroma-js";
 
 /**
@@ -32,13 +37,16 @@ const container = (props) => ({
   borderTop: "1px solid",
 });
 
+const opposite = (props) => ({
+  color: props.oppositeColor,
+});
+
 /**
  * Displays the component.
  * @see ColorInfo.md
  */
 const ColorInfo = (props) => {
   const { color, modelName, space } = props;
-  const { containerKlass } = useStyles([container], props);
 
   const name = color.name();
   const name2 = name.includes("#") ? null : name;
@@ -47,9 +55,16 @@ const ColorInfo = (props) => {
   const asProps2 = { title: "Properties", display: true };
   const asProps3 = { title: "Suggestions", display: true };
 
+  /**
+   * Temperature.
+   * - Just informative ...
+   * - When trying to choose an opossite color with AAA it's not working ...
+   * - I mean warm on cool doen't mean it's necessarily AAA.
+   */
   const temp = color.temperature();
   const warm = temp < 5000 ? "warm (yellowish)" : "cool (bluish)";
 
+  // HSL
   const { recommended: textColor, contrast, aaa, aa } = useTextColor(color);
 
   const s = useColorValue(color.get("hsl.s") * 100, 2);
@@ -62,6 +77,21 @@ const ColorInfo = (props) => {
 
   const pureText = black ? "black" : white ? "white" : null;
   const pureValue = black ? black : white;
+
+  const oppositeColor = chroma.random();
+  const [
+    oppositeColorContrast,
+    oppositeColorAa,
+    oppositeColorAaa,
+  ] = useColorContrast(color, oppositeColor);
+
+  /**
+   * Loads the styles.
+   */
+  const { containerKlass, oppositeKlass } = useStyles([container, opposite], {
+    ...props,
+    oppositeColor: oppositeColor.css(),
+  });
 
   return (
     <Grid
@@ -117,7 +147,10 @@ const ColorInfo = (props) => {
           Text color (white or black): {textColor.name()}, contrast: {contrast}
           {aa ? ", AA" : ""} {aaa ? ", AAA" : ""}
         </Cell>
-        <Cell>{!aaa && "Text color, AAA:"}</Cell>
+        <Cell className={cx("Opposite", oppositeKlass)}>
+          {!aaa &&
+            `Text color, AAA: ${oppositeColor.hex()}, contrast: ${oppositeColorContrast}`}
+        </Cell>
       </Grid>
     </Grid>
   );

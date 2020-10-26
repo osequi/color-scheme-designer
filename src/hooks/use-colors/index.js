@@ -9,3 +9,5 @@ export {
 export { useTextColor, recommendTextColor } from "./useTextColor";
 
 export { colorValueToDecimal, useColorValue } from "./useColorValue";
+
+export { calculateContrast, useColorContrast } from "./useColorContrast";
