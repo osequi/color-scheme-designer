@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { cx } from "emotion";
-import { useStyles, useTextColor } from "../../hooks";
+import { useStyles, useTextColor, useColorValue } from "../../hooks";
 import chroma from "chroma-js";
 
 /**
@@ -52,15 +52,13 @@ const ColorInfo = (props) => {
 
   const { recommended: textColor, contrast, aaa, aa } = useTextColor(color);
 
-  const s = Number(color.get("hsl.s").toFixed(2) * 100);
-  const l = color.get("hsl.l").toFixed(4) * 100;
-
-  console.log("1:", color.get("hsl.s") * 100);
+  const s = useColorValue(color.get("hsl.s") * 100, 2);
+  const l = useColorValue(color.get("hsl.l") * 100, 2);
 
   const pureColor = l === 100 || l === 0 || l === 50;
 
-  const black = l < 50 ? (50 - l) * 2 : null;
-  const white = l > 50 ? (l - 50) * 2 : null;
+  const black = l < 50 ? useColorValue((50 - l) * 2, 2) : null;
+  const white = l > 50 ? useColorValue((l - 50) * 2, 2) : null;
 
   const pureText = black ? "black" : white ? "white" : null;
   const pureValue = black ? black : white;
