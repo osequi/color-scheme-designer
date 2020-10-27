@@ -12,7 +12,7 @@ const getAaaContrast = (color1, color2) => {
   // By which amount ?
   const amount = 7 - contrast;
 
-  const newColor = color1.luminance(luminance - 0.1);
+  const newColor = color1.luminance(luminance - 0.05);
   return newColor;
 };
 

@@ -34,6 +34,8 @@ const defaultProps = {
  */
 const container = (props) => ({
   display: props.display ? "grid" : "none",
+  backgroundColor: props.color.css(),
+  color: props.textColor.css(),
   borderTop: "1px solid",
 });
 
@@ -52,14 +54,6 @@ const largeFont = (props) => ({
  */
 const ColorInfo = (props) => {
   const { color, modelName, space } = props;
-
-  /**
-   * Loads the styles.
-   */
-  const { containerKlass, largeFontKlass, largeFontBoldKlass } = useStyles(
-    [container, largeFont, largeFontBold],
-    props
-  );
 
   const name = color.name();
   const name2 = name.includes("#") ? null : name;
@@ -94,6 +88,17 @@ const ColorInfo = (props) => {
   const pureText = black ? "black" : white ? "white" : null;
   const pureValue = black ? black : white;
 
+  /**
+   * Loads the styles.
+   */
+  const { containerKlass, largeFontKlass, largeFontBoldKlass } = useStyles(
+    [container, largeFont, largeFontBold],
+    { ...props, textColor: textColor }
+  );
+
+  /**
+   * Prepares the messages.
+   */
   const largeText1 = "This color best supports large texts.";
   const largeText2 =
     "Large text is defined as 14 point (typically 18.66px) and bold or larger.";
