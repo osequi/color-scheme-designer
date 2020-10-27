@@ -37,8 +37,13 @@ const container = (props) => ({
   borderTop: "1px solid",
 });
 
-const opposite = (props) => ({
-  color: props.oppositeColor,
+const largeFontBold = (props) => ({
+  fontSize: "18.66px",
+  fontWeight: "bold",
+});
+
+const largeFont = (props) => ({
+  fontSize: "24px",
 });
 
 /**
@@ -47,6 +52,14 @@ const opposite = (props) => ({
  */
 const ColorInfo = (props) => {
   const { color, modelName, space } = props;
+
+  /**
+   * Loads the styles.
+   */
+  const { containerKlass, largeFontKlass, largeFontBoldKlass } = useStyles(
+    [container, largeFont, largeFontBold],
+    props
+  );
 
   const name = color.name();
   const name2 = name.includes("#") ? null : name;
@@ -81,10 +94,25 @@ const ColorInfo = (props) => {
   const pureText = black ? "black" : white ? "white" : null;
   const pureValue = black ? black : white;
 
-  /**
-   * Loads the styles.
-   */
-  const { containerKlass } = useStyles([container], props);
+  const largeText1 = "This color best supports large texts.";
+  const largeText2 =
+    "Large text is defined as 14 point (typically 18.66px) and bold or larger.";
+  const largeText3 = "Or 18 point (typically 24px) or larger.";
+
+  const colorTune = "This color can be fine tuned to support also small text.";
+
+  const useless = "THis color is useless.";
+
+  const fineTuneMessage = aaa ? null : aa ? (
+    <>
+      <p>{largeText1}</p>
+      <p className={cx(largeFontBoldKlass)}>{largeText2}</p>
+      <p className={cx(largeFontKlass)}>{largeText3}</p>
+      <p>{colorTune}</p>
+    </>
+  ) : (
+    <p>{useless}</p>
+  );
 
   return (
     <Grid
@@ -140,10 +168,7 @@ const ColorInfo = (props) => {
           Text color (white or black): {textColor.name()}, contrast: {contrast}
           {aaa ? ", AAA" : ""} {!aaa && aa ? ", AA" : ""}
         </Cell>
-        <Cell>
-          {!aaa &&
-            "Please fine tune the color. A higher contrast on this color cannot be achieved."}
-        </Cell>
+        <Cell>{fineTuneMessage}</Cell>
       </Grid>
     </Grid>
   );
