@@ -98,9 +98,7 @@ const ColorInfo = (props) => {
   const largeText2 =
     "Large text is defined as 14 point (typically 18.66px) and bold or larger.";
   const largeText3 = "Or 18 point (typically 24px) or larger.";
-
   const colorTune = "This color can be fine tuned to support also small text.";
-
   const useless = "THis color is useless.";
 
   const fineTuneMessage = aaa ? null : aa ? (

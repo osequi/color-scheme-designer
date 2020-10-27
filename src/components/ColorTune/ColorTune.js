@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { cx } from "emotion";
-import { useStyles, useMaximumContrast } from "../../hooks";
+import { useStyles, useMaximumContrast, useColorTune } from "../../hooks";
 import chroma from "chroma-js";
 
 /**
@@ -45,18 +45,24 @@ const ColorTune = (props) => {
 
   if (!color) return null;
 
-  const [textColorMax] = useMaximumContrast(color);
+  const [textColorMax, contrast, aa, aaa] = useMaximumContrast(color);
+  const [color2, setColor2] = useState(color);
 
-  const [textColor, setTextColor] = useState(textColorMax);
+  const handleClick = () => {
+    const fineTuned = useColorTune(color, textColorMax);
+    setColor2(fineTuned);
+  };
 
   const { containerKlass } = useStyles([container], {
     color: color.css(),
-    textColor: textColor.css(),
+    textColor: textColorMax.css(),
   });
 
   return (
     <div className={cx("ColorTune", containerKlass)}>
       <ColorInfo color={color} display={true} />
+      {!aaa && <button onClick={handleClick}>Fine tune</button>}
+      {color2 !== color && <ColorInfo color={color2} display={true} />}
     </div>
   );
 };
