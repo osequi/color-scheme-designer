@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { cx } from "emotion";
 import { useStyles, useMaximumContrast, useColorTune } from "../../hooks";
 import chroma from "chroma-js";
+import shortid from "shortid";
 
 /**
  * Imports other components and hooks.
@@ -41,8 +42,9 @@ const ColorTune = (props) => {
 
   if (!color) return null;
 
+  // NOTE: when component is re-rendered on color change color2 doesn't gets updated
+  const [color2, setColor2] = useState(null);
   const [textColorMax, contrast, aa, aaa] = useMaximumContrast(color);
-  const [color2, setColor2] = useState(color);
 
   const handleClick = () => {
     const fineTuned = useColorTune(color, textColorMax);
@@ -53,9 +55,11 @@ const ColorTune = (props) => {
 
   return (
     <div className={cx("ColorTune", containerKlass)}>
-      <ColorInfo color={color} display={true} />
+      <ColorInfo key={shortid.generate()} color={color} display={true} />
       {!aaa && <button onClick={handleClick}>Fine tune</button>}
-      {color2 !== color && <ColorInfo color={color2} display={true} />}
+      {color2 && (
+        <ColorInfo key={shortid.generate()} color={color2} display={true} />
+      )}
     </div>
   );
 };
