@@ -36,6 +36,10 @@ const container = (props) => ({
   border: "1px solid",
 });
 
+const container2 = (props) => ({
+  backgroundColor: props.color2,
+});
+
 /**
  * Displays the component.
  * @see ColorTune.md
@@ -53,16 +57,26 @@ const ColorTune = (props) => {
     setColor2(fineTuned);
   };
 
-  const { containerKlass } = useStyles([container], {
-    color: color.css(),
-    textColor: textColorMax.css(),
-  });
+  const { containerKlass, container2Klass } = useStyles(
+    [container, container2],
+    {
+      color: color.css(),
+      textColor: textColorMax.css(),
+      color2: color2.css(),
+    }
+  );
 
   return (
     <div className={cx("ColorTune", containerKlass)}>
       <ColorInfo color={color} display={true} />
       {!aaa && <button onClick={handleClick}>Fine tune</button>}
-      {color2 !== color && <ColorInfo color={color2} display={true} />}
+      {color2 !== color && (
+        <ColorInfo
+          className={cx(container2Klass)}
+          color={color2}
+          display={true}
+        />
+      )}
     </div>
   );
 };
