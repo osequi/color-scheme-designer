@@ -7,8 +7,7 @@ import Link from "next/link";
 /**
  * Imports other components and hooks.
  */
-import { Grid, Cell } from "../layout";
-import { Nav } from "../semantic-elements";
+import { Snap } from "../layout";
 
 /**
  * Defines the prop types.
@@ -39,14 +38,14 @@ const Menu = (props) => {
   };
 
   return (
-    <Grid className={cx("Menu", containerKlass)} as={Nav} asProps={asProps}>
-      <Cell>
-        <Link href="/add">Add color</Link>
-      </Cell>
-      <Cell>
-        <Link href="/">Home</Link>
-      </Cell>
-    </Grid>
+    <Snap className={cx("Menu", containerKlass)} title="Menu">
+      <Link href="/add">Add color</Link>
+      <Link href="/">Home 1</Link>
+      <Link href="/">Home 2</Link>
+      <Link href="/">Home 3</Link>
+      <Link href="/">Home 4</Link>
+      <Link href="/">Home 5</Link>
+    </Snap>
   );
 };
 

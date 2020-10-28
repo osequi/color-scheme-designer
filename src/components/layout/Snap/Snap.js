@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { cx } from "emotion";
-import { useStyles } from "../../hooks";
+import { useStyles } from "../../../hooks";
 
 /**
  * Imports other components and hooks.
@@ -17,7 +17,13 @@ const propTypes = {
   direction: PropTypes.oneOf(["x", "y"]),
   type: PropTypes.oneOf(["mandatory", "proximity"]),
   align: PropTypes.oneOf(["start", "center", "end"]),
-  padding: PropTypes.number,
+  childrenMargin: PropTypes.number,
+  /**
+   * It's not an usual padding
+   * @see https://css-tricks.com/practical-css-scroll-snapping/#scroll-padding
+   * @type {string}
+   */
+  scrollPadding: PropTypes.string,
   /**
    * The content to be displayed.
    * It should be preferably an array of Cells.
@@ -40,7 +46,8 @@ const defaultProps = {
   direction: "x",
   type: "mandatory",
   align: "start",
-  padding: 1,
+  scrollPadding: "0 50%",
+  childrenMargin: 1,
   children: null,
   className: null,
 };
@@ -50,10 +57,20 @@ const defaultProps = {
  */
 const container = (props) => ({
   scrollSnapType: `${props.direction} ${props.type}`,
-  scrollPadding: `calc(var(--lem) * ${props.padding})`,
+  scrollPadding: `${props.padding}`,
+
+  display: "flex",
+  overflowX: "auto",
+  // Mandatarory in case the child are text.
+  whiteSpace: "nowrap",
 
   ["& > *"]: {
     scrollSnapAlign: `${props.align}`,
+    display: "inline-flex",
+  },
+
+  ["& > * + * "]: {
+    marginLeft: `calc(var(--lem) * ${props.childrenMargin})`,
   },
 });
 
