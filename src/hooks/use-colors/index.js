@@ -4,6 +4,7 @@ export {
   useColorFromSpace,
   createColorFromSpace,
   colorSpaces,
+  colorSpaceProps,
 } from "./useColorFromSpace";
 
 export {

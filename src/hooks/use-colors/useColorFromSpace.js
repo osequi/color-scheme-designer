@@ -1,5 +1,13 @@
+import PropTypes from "prop-types";
 import chroma from "chroma-js";
 import { lowerCase } from "lodash";
+
+const colorSpaceProps = {
+  name: PropTypes.string,
+  description: PropTypes.string,
+  example: PropTypes.string,
+  spaceName: PropTypes.string,
+};
 
 const colorSpaces = [
   {
@@ -139,4 +147,9 @@ const useColorFromSpace = (input, space) => {
   return createColorFromSpace(input, space);
 };
 
-export { useColorFromSpace, createColorFromSpace, colorSpaces };
+export {
+  useColorFromSpace,
+  createColorFromSpace,
+  colorSpaces,
+  colorSpaceProps,
+};

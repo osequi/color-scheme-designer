@@ -7,6 +7,7 @@ export {
   useColorFromSpace,
   createColorFromSpace,
   colorSpaces,
+  colorSpaceProps,
   useMaximumContrast,
   maximumContrastPossible,
   colorValueToDecimal,
