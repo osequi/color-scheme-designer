@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { cx } from "emotion";
 import { useStyles } from "../../hooks";
@@ -6,6 +6,10 @@ import { useStyles } from "../../hooks";
 /**
  * Imports other components and hooks.
  */
+import Colors from "../Colors";
+import { Grid } from "../layout";
+import { Section } from "../semantic-elements";
+import { GlobalContext } from "../../../pages/_app.js";
 
 /**
  * Defines the prop types.
@@ -29,9 +33,18 @@ const container = {
  * @see Home.md
  */
 const Home = (props) => {
+  const context = useContext(GlobalContext);
+  const { colors, setColors } = context;
+
   const { containerKlass } = useStyles([container], props);
 
-  return "Pls. select something from the menu.";
+  const asProps = { title: "Home" };
+
+  return (
+    <Grid as={Section} asProps={asProps} className={cx("Home", containerKlass)}>
+      <Colors colors={colors} setColors={setColors} />
+    </Grid>
+  );
 };
 
 Home.propTypes = propTypes;

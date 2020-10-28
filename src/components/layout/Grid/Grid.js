@@ -147,7 +147,7 @@ const calculateFauxLines = (props) => {
  * Checks if a grid has a title.
  */
 const hasTitle = (asProps) => {
-  return asProps && asProps?.title && asProps?.display && asProps.display;
+  return asProps && asProps?.title;
 };
 
 /**
@@ -189,6 +189,11 @@ const Grid = (props) => {
   const gridHasTitle = hasTitle(asProps);
 
   /**
+   * Checks if grid has multiple children.
+   */
+  const gridHasMultipleChildren = children && children.length !== undefined;
+
+  /**
    * Prepares the props to render the component.
    */
   const propsGridWithoutTitle = {
@@ -206,13 +211,14 @@ const Grid = (props) => {
   /**
    * Prepares the children.
    */
-  const childrenWrapped = gridHasTitle ? (
-    <div className={cx("GridItems", containerKlass, fauxLinesStyleKlass)}>
-      {children}
-    </div>
-  ) : (
-    children
-  );
+  const childrenWrapped =
+    gridHasTitle && gridHasMultipleChildren ? (
+      <div className={cx("GridItems", containerKlass, fauxLinesStyleKlass)}>
+        {children}
+      </div>
+    ) : (
+      children
+    );
 
   return createElement(as, props2, childrenWrapped);
 };

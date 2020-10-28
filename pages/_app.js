@@ -1,8 +1,8 @@
 import React, { useState, createContext } from "react";
 import PropTypes from "prop-types";
+import shortid from "shortid";
 
 import theme from "../src/theme";
-import Menu from "../src/components/Menu";
 import { Setup, Text } from "../src/components/typography";
 import { Grid, Cell } from "../src/components/layout";
 import { H1 } from "../src/components/semantic-elements";
@@ -14,13 +14,13 @@ import "../src/theme/typography/fonts/fonts.css";
 /**
  * Imports other components and hooks.
  */
-import { ColorPropTypes, ColorDefaultProps } from "../src/components/Color";
+import { ColorsPropTypes, ColorsDefaultProps } from "../src/components/Colors";
 
 /**
  * Defines the prop types.
  */
 const propTypes = {
-  colors: PropTypes.arrayOf(PropTypes.shape(ColorPropTypes)),
+  ...ColorsPropTypes,
 };
 
 /**
@@ -29,22 +29,26 @@ const propTypes = {
 const defaultProps = {
   colors: [
     {
+      id: shortid.generate(),
       name: "Background",
       description: "The background color.",
       value: "white",
     },
     {
+      id: shortid.generate(),
       name: "Text",
       description: "The text color.",
       value: "black",
     },
     {
+      id: shortid.generate(),
       name: "Highlight",
       description:
         "The highlight color. Used for links, buttons, call to action elements.",
       value: null,
     },
     {
+      id: shortid.generate(),
       name: "Shade",
       description: "The shade color. Used for secondary backgrounds.",
       value: null,
@@ -60,15 +64,16 @@ const MyApp = ({ Component, pageProps }) => {
 
   const [colors, setColors] = useState(defaultColors);
 
+  const globalContext = { colors: colors, setColors: setColors };
+
   return (
     <ThemeContext.Provider value={theme}>
-      <GlobalContext.Provider value={{ colors: colors, setColors: setColors }}>
+      <GlobalContext.Provider value={globalContext}>
         <Setup />
         <Text>
           <Text variant="title" as={H1}>
             Color Scheme Designer
           </Text>
-          <Menu />
           <Component {...pageProps} />
         </Text>
       </GlobalContext.Provider>

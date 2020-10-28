@@ -6,11 +6,13 @@ import { useStyles, colorSpaceProps } from "../../hooks";
 /**
  * Imports other components and hooks.
  */
+import { Article } from "../semantic-elements";
 
 /**
  * Defines the prop types.
  */
 const propTypes = {
+  id: PropTypes.string,
   name: PropTypes.string,
   description: PropTypes.string,
   value: PropTypes.string,
@@ -21,6 +23,7 @@ const propTypes = {
  * Defines the default props.
  */
 const defaultProps = {
+  id: null,
   name: null,
   description: null,
   value: null,
@@ -41,7 +44,7 @@ const container = {
 const Color = (props) => {
   const { containerKlass } = useStyles([container], props);
 
-  return <div className={cx("Color", containerKlass)}>Color</div>;
+  return <Article className={cx("Color", containerKlass)}>Color</Article>;
 };
 
 Color.propTypes = propTypes;
