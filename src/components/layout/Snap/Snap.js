@@ -6,7 +6,7 @@ import { useStyles } from "../../../hooks";
 /**
  * Imports other components and hooks.
  */
-import { Nav } from "../../semantic-elements";
+import { Nav, NavPropTypes, NavDefaultProps } from "../../semantic-elements";
 
 /**
  * Defines the prop types.
@@ -24,6 +24,7 @@ const propTypes = {
    * @type {string}
    */
   scrollPadding: PropTypes.string,
+  navProps: PropTypes.shape(NavPropTypes),
   /**
    * The content to be displayed.
    * It should be preferably an array of Cells.
@@ -48,6 +49,7 @@ const defaultProps = {
   align: "start",
   scrollPadding: "0 50%",
   childrenMargin: 1,
+  navProps: { ...NavDefaultProps, title: "Snap" },
   children: null,
   className: null,
 };
@@ -72,6 +74,10 @@ const container = (props) => ({
   ["& > * + * "]: {
     marginLeft: `calc(var(--lem) * ${props.childrenMargin})`,
   },
+
+  ["& .Headings + *"]: {
+    marginLeft: 0,
+  },
 });
 
 /**
@@ -79,11 +85,13 @@ const container = (props) => ({
  * @see Snap.md
  */
 const Snap = (props) => {
-  const { children, className } = props;
+  const { children, className, navProps } = props;
   const { containerKlass } = useStyles([container], props);
 
   return (
-    <Nav className={cx("Snap", containerKlass, className)}>{children}</Nav>
+    <Nav {...navProps} className={cx("Snap", containerKlass, className)}>
+      {children}
+    </Nav>
   );
 };
 

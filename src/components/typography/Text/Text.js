@@ -99,7 +99,6 @@ const titleText = (props, theme) => {
   return {
     ...theme.typography.helpers.font("Nimbus Sans Regular"),
     ...theme.typography.helpers.scale(1),
-    margin: "var(--lem) 0",
   };
 };
 

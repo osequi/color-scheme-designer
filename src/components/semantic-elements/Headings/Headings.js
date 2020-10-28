@@ -1,5 +1,6 @@
 import React, { createElement } from "react";
 import PropTypes from "prop-types";
+import { cx } from "emotion";
 
 /**
  * Defines the prop types
@@ -20,6 +21,13 @@ const propTypes = {
    * @type {any}
    */
   children: PropTypes.any,
+  /**
+   * The className of the element.
+   * It's optional to set.
+   * Serves the technical purpose of style chaining.
+   * @type {string}
+   */
+  className: PropTypes.string,
 };
 
 /**
@@ -29,6 +37,7 @@ const defaultProps = {
   level: 2,
   display: true,
   children: null,
+  className: null,
 };
 
 /**
@@ -39,7 +48,7 @@ const defaultProps = {
  */
 
 const Headings = (props) => {
-  const { level, display, children } = props;
+  const { level, display, children, className } = props;
 
   /**
    * Displays nothing if there is no `children` prop defined
@@ -64,7 +73,7 @@ const Headings = (props) => {
   /**
    * Prepares props for createElement
    */
-  const props2 = { style: style };
+  const props2 = { style: style, className: cx("Headings", className) };
 
   return createElement(levelAsString, props2, children);
 };
