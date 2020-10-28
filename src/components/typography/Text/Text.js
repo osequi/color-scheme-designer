@@ -97,8 +97,8 @@ const longformText = (props, theme) => {
 
 const titleText = (props, theme) => {
   return {
-    ...theme.typography.helpers.font("Nimbus Sans Regular"),
-    ...theme.typography.helpers.scale(1),
+    ...theme.typography.helpers.font("Nimbus Sans Medium"),
+    //...theme.typography.helpers.scale(1),
   };
 };
 

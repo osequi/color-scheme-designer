@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { cx } from "emotion";
-import { useStyles, colorSpaceProps } from "../../hooks";
+import { useStyles, colorSpaceProps, createColorFromSpace } from "../../hooks";
 
 /**
  * Imports other components and hooks.
@@ -33,18 +33,61 @@ const defaultProps = {
 /**
  * Defines the styles.
  */
-const container = {
-  label: "Container",
-};
+const container = (props) => ({
+  backgroundColor: props.background,
+});
 
 /**
  * Displays the component.
  * @see Color.md
  */
 const Color = (props) => {
-  const { containerKlass } = useStyles([container], props);
+  const { name, value, space } = props;
+  const { name: spaceName } = space;
 
-  return <Article className={cx("Color", containerKlass)}>Color</Article>;
+  /**
+   * Manages the creation of the color.
+   */
+  const [color, setColor] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
+
+  /**
+   * Creates the color.
+   */
+  useEffect(() => {
+    const c = createColorFromSpace(value, spaceName);
+    let err = c;
+
+    if (typeof c === "object") {
+      setColor(c);
+      err = null;
+    }
+
+    setErrorMessage(err);
+  }, [value, space]);
+
+  let backgroundColor = "inherit";
+
+  useEffect(() => {
+    if (!color) return;
+    backgroundColor = color.css();
+  }, [color]);
+
+  /**
+   * Displays the color.
+   */
+  const { containerKlass } = useStyles([container], {
+    background: backgroundColor,
+  });
+
+  const displayErrorMessage = value !== "Undefined";
+
+  return (
+    <Article className={cx("Color", containerKlass)} title={name}>
+      <p>{value}</p>
+      <p>{displayErrorMessage && errorMessage && errorMessage}</p>
+    </Article>
+  );
 };
 
 Color.propTypes = propTypes;
