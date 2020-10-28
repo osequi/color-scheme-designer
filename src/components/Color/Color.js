@@ -17,6 +17,11 @@ const propTypes = {
   description: PropTypes.string,
   value: PropTypes.string,
   space: PropTypes.shape(colorSpaceProps),
+  /**
+   * The chroma.js representation of the color.
+   * @type {object}
+   */
+  chroma: PropTypes.object,
 };
 
 /**
@@ -28,13 +33,17 @@ const defaultProps = {
   description: null,
   value: null,
   space: null,
+  chroma: null,
 };
 
 /**
  * Defines the styles.
  */
 const container = (props) => ({
-  backgroundColor: props.background,
+  backgroundColor: props.backgroundColor,
+  color: props.textColor,
+  border: props.border,
+  borderRadius: "50%",
 });
 
 /**
@@ -42,52 +51,50 @@ const container = (props) => ({
  * @see Color.md
  */
 const Color = (props) => {
-  const { name, value, space } = props;
-  const { name: spaceName } = space;
+  const { chroma: color, textColor, backgroundColor, name, value } = props;
 
   /**
-   * Manages the creation of the color.
+   * Prepares the background and text colors.
+   * Edge cases like black-on-black has to be dealt with.
    */
-  const [color, setColor] = useState(null);
-  const [errorMessage, setErrorMessage] = useState(null);
+  const backgroundColor2 = color && color.css ? color.css() : "inherit";
+  const textColor2 =
+    name && name === textColor.name
+      ? backgroundColor.chroma.css()
+      : textColor.chroma.css();
 
   /**
-   * Creates the color.
-   */
-  useEffect(() => {
-    const c = createColorFromSpace(value, spaceName);
-    let err = c;
-
-    if (typeof c === "object") {
-      setColor(c);
-      err = null;
-    }
-
-    setErrorMessage(err);
-  }, [value, space]);
-
-  let backgroundColor = "inherit";
-
-  useEffect(() => {
-    if (!color) return;
-    backgroundColor = color.css();
-  }, [color]);
-
-  /**
-   * Displays the color.
+   * Loads the styles.
    */
   const { containerKlass } = useStyles([container], {
-    background: backgroundColor,
+    backgroundColor: backgroundColor2,
+    textColor: textColor2,
+    border: "1px solid",
   });
 
-  const displayErrorMessage = value !== "Undefined";
-
-  return (
-    <Article className={cx("Color", containerKlass)} title={name}>
-      <p>{value}</p>
-      <p>{displayErrorMessage && errorMessage && errorMessage}</p>
-    </Article>
+  /**
+   * Defines the title.
+   */
+  const title = color ? (
+    <span>
+      {name}
+      <br />
+      {value}
+    </span>
+  ) : (
+    `Add ${name} color`
   );
+
+  /**
+   * Defines what to display.
+   */
+  const display = color ? (
+    <Article className={cx("Color", containerKlass)} title={title}></Article>
+  ) : (
+    <button>{title}</button>
+  );
+
+  return display;
 };
 
 Color.propTypes = propTypes;

@@ -33,6 +33,12 @@ const propTypes = {
    */
   gap: PropTypes.number,
   /**
+   * The padding of the children, unitless.
+   * The padding will be a multiply of `var(--lem)`.
+   * @type {string}
+   */
+  padding: PropTypes.number,
+  /**
    * The gap faux lines, aka the grid borders.
    * The grid borders look good only when there is no gap in the grid.
    * Therefore when fauxLines is set instead of grid gap we'll set a padding on the grid elements.
@@ -73,6 +79,7 @@ const defaultProps = {
   height: "100%",
   columns: 1,
   gap: 0,
+  padding: 0,
   fauxLines: "none",
   as: "div",
   asProps: null,
@@ -94,7 +101,7 @@ const container = (props, theme) => ({
   ["& > *"]: {
     padding: props.borderLeftSelector
       ? `0 calc(${props.gap} * var(--lem)) calc(${props.gap} * var(--lem)) 0`
-      : "inherit",
+      : `calc(${props.padding} * var(--lem))`,
   },
 });
 
